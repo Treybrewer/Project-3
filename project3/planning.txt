@@ -1,0 +1,162 @@
+
+
+database info-----------
+
+mongodb = project3
+
+collections: scrapeddatamodel, 
+
+--------------------------------
+
+
+the front end is in the client folder
+
+HOLLAND'S AREA
+
+    - create files in src/pages
+        - input page is src/pages/Input/Input.js
+            - this should contain state and a form for the following: 
+                - company name
+                - keywords to search for.
+                - possible dates, between, etc
+                - location to search for the data "linkedin"
+
+        - results page is src/pages/Results/Results.js
+            - this should contain state and a form for the following: 
+                -  componentdidload() a function for a .get to utils/API.js to load all resumes that match
+                - results/list component to display the resumes
+
+TREY'S AREA (TERRORIST CATCHER)
+
+    - use the folder called Scraper
+        - there is a file scraper.js in that folder.
+    - create a function to scrape linkedin and return that data.
+        (an api key would be awesome but cheerio can be used to scrape)
+    - the returned data will be sent to a collection called (scrapeddata) a temp collection until matches are made.
+    
+
+Brian's AREA
+
+    - i will continue setting up the axios calls from client to server for now.
+
+
+
+
+
+
+=====================================================================
+
+
+Scraper
+    - each time a scrape is done, that data will be saved in a "temporary" collection (scrapedData).
+    - maybe use axios, cheerio, etc to collect data from page
+    - we will need a location to scrape "linkedin"
+
+UI
+    - user will enter in the following data:
+        - company name
+        - keywords to search for.
+        - possible dates, between, etc
+        - location to search for the data "linkedin"
+
+    - app will do the following logic:
+        - store these inputs into a collection ( "companyname"+searchcriteria )
+                * companyname
+                * [keywords]
+                * searchdate?
+
+        - store the scrape results into a collection ( scrapedData )
+                * [ resumes scraped]
+
+        - logic.js will do the following:
+                * compare each result from ( scrapedData ) with 
+                  each keyword from ( "companyname"+searchcriteria.keywords )
+                * if there is a match
+                    - save that resume to a new collection ( "companyName"+resumes ) 
+                    - if there is not a match, remove that resume from ( scrapedData )
+
+        - return:
+            - company name
+            - <ul> of resumes that match.  db. ( "companyName"+resumes ).findAll({})
+
+------------------------------------------
+
+clientside
+
+
+
+
+
+clientside
+    react/pages/inputInfo
+        - input form for:
+            - company name
+            - keywords to search for.
+            - possible dates, between, etc
+            - location to search for the data "linkedin"
+
+            2 things need to happen from here;
+                1) save the company/keywords to the db
+                2) send the "linkedin" link to the scraper folder
+
+    1)
+    utils/API.js
+        - axios .post request to server
+
+    routes/index.js
+        - receives the axios request and routes it to...
+----
+    routes/API/admin.js
+        - processes the axios .post request with a call to
+
+    controller/adminController.js   
+        - this will put the data into the collection ( "companyname"+searchcriteria.keywords )
+
+    
+    2)
+    utils/API.js
+            - axios .get request to server
+
+    routes/index.js
+        - receives the axios request and routes it to...
+
+    routes/API/scrape.js
+        - processes the axios .get request with a call to
+
+
+    scraper/scraper.js
+            - this will make a scraper request and return the scraped data
+            - then push this data to the db ( scrapedData )  "a temp folder used to search for keywords."
+
+
+    clientside
+          react/pages/results
+            componentdidload()
+
+            utils/API.js
+        - axios .get request to server
+
+    routes/index.js
+        - receives the axios request and routes it to...
+-----
+    routes/API/results.js
+        - processes the axios .get request with a call to
+
+    
+
+     logic/logic.js
+        - this will compare ( scrapedData ) to ( "companyname"+searchcriteria.keywords ) and
+            send all matches to...
+            
+
+    controller/resultsController.js   
+        - this will save the results to a new collection ( "companyName"+resumes ) and return data to client
+
+
+
+
+
+
+
+
+       
