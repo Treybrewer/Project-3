@@ -5,6 +5,9 @@ import Results from "./pages/Results";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 
+
+
+
 const App = () => (
   <Router>
     <div>
@@ -13,10 +16,12 @@ const App = () => (
         <Route exact path="/" component={Input} />
         <Route exact path="/results" component={Results} />
         {/* <Route exact path="/books/:id" component={Results} /> */}
-        <Route component={NoMatch} />
+        {/* <Route component={NoMatch]]} /> */}
       </Switch>
     </div>
   </Router>
+
+  
 );
 
 export default App;

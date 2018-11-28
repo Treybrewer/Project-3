@@ -5,6 +5,7 @@ export default {
 // uses route: /api/companyrequirements/
  
 addNewCompany: function(data) {
+  console.log(data);
   return axios.post("/api/companyrequirements/", data);
 },
 
