@@ -1,20 +1,62 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
-  },
-  // Gets the book with the given id
-  getBook: function(id) {
-    return axios.get("/api/books/" + id);
-  },
-  // Deletes the book with the given id
-  deleteBook: function(id) {
-    return axios.delete("/api/books/" + id);
-  },
-  // Saves a book to the database
-  saveBook: function(bookData) {
-    return axios.post("/api/books", bookData);
-  }
+
+// uses route: /api/companyrequirements/
+ 
+addNewCompany: function(data) {
+  return axios.post("/api/companyrequirements/", data);
+},
+
+allCompanies: function() {
+  return axios.get("/api/companyrequirements");
+},
+
+updateCompany: function(company, data) {
+  return axios.put("/api/companyrequirements" + company , data);
+},
+
+deleteCompany: function(company) {
+  return axios.delete("/api/compayrequirements/" + company );
+},
+
+returnSpecificCompany: function(company) {
+  return axios.get("/api/companyrequirements/" + company);
+},
+
+// uses routes: /api/companyresults/
+
+seeAllResults: function() {
+  return axios.get("/api/companyresults");
+},
+
+saveSpecificCompanyResult: function(data) {
+  return axios.post("/api/companyresults", data);
+},
+
+seeSpecificCompanyResult: function(company) {
+  return axios.get("/api/companyresults/" + company);
+},
+
+updateCompanyResult: function(company, data) {
+  return axios.put("/api/companyresults/" + company, data);
+},
+
+deleteCompanyResult: function(company) {
+  return axios.delete("/api/companyresults/" + company);
+},
+
+// uses routes: /api/operations/
+
+
+runSpecificMatch: function(company) {
+  return axios.put("/api/operations" + company);
+},
+
+runAllMatches: function() {
+  return axios.post("/api/operations");
+},
+
+
 };
+

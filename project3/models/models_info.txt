@@ -1,0 +1,13 @@
+
+companyRequirementsModel.js
+    - this stores the requirements for each comanys search
+
+
+compayResultsModel.js
+    - this stores the results of a comparison between scraped resumes to keyword
+
+
+scrapedDataModel.js
+    - this stores scraped data and holds it until a comparison can be done.
+
+
