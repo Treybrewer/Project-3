@@ -1,5 +1,6 @@
 import React, {Component} from 'react';  
 import API from '../../utils/API';
+import "./input.css";
 
 /* Import Components */
 
@@ -32,17 +33,20 @@ onSubmit = event => {
 
 render() {
   return (
-  <form>                                           
+  <div className="form-style">    
+  <form> 
+    <h1>Company</h1>
       <input
       name='company' 
-      placeholder='company name' 
+      placeholder='"Company name"' 
       value={this.state.company} 
       onChange={event => this.change(event)} 
       />
       <br />
+      <h1>What skills are you looking for?</h1>
        <input
       name='searchWords' 
-      placeholder='key words' 
+      placeholder='"Keywords"' 
       value={this.state.searchWords} 
       onChange={event => this.change(event)}
       />
@@ -64,6 +68,7 @@ render() {
 
       <button onClick={this.onSubmit}>Submit</button>
     </form>
+    </div> 
    );
  }
 }
