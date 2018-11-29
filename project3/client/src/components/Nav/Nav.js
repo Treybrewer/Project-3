@@ -1,11 +1,16 @@
 import React from "react";
-
+import "./nav.css";
 const Nav = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a className="navbar-brand" href="/">
-      React Reading List
-    </a>
-  </nav>
+  <nav>
+   <div className="topNav">
+    <a href="/">Trey's Business Solutions</a>
+     <a href="/">Home</a>
+     <a href="#">Input</a>
+     <a href="#">Operations</a>
+     <a href="#">Admin</a>
+    </div>
+
+    </nav>
 );
 
 export default Nav;
