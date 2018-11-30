@@ -12,50 +12,55 @@ const createMatches = require("../logicController/createMatches");
 // function's to control logic for external api's
 module.exports = {
 
-
+  // THIS ONE NEEDS A RETURN
   runSpecificCompanyforMatch: function (company) {
-    // get the name of the company
-     console.log("this is the company: " + company);
 
-    companyRequirements.findByCompany(company)
-      .then(dbresults => {
-        console.log("this is the company searchwords back from database.");
-        console.log(dbresults.searchWords);
-       
-        // !!!!! here we can call the linkedin api with keywords !!!!!
+
+    return new Promise((resolve, reject) => {
+
+      // get the name of the company
+      console.log("this is the company: " + company);
+
+      companyRequirements.findByCompany(company)
+        .then(dbresults => {
+          console.log("this is the company searchwords back from database.");
+          console.log(dbresults.searchWords);
+
+          // !!!!! here we can call the linkedin api with keywords !!!!!
           // scrapeData.performScrape()
-        // call a scrape() from "./scrapeData.js".
-        // req.body.location = "linkedin url".
-//=========================================================
-        let resume1 = {
-          company: company,
-          name: "roger",
-          resume: "i am this guy, i use keywords: " + dbresults.searchWords[0] + "and sometimes: " + dbresults.searchWords[1] + ".",
-        };
-        let resume2 = {
-          company: company,
-          name: "kevin",
-          resume: "i am this guy, i use keywords: " + dbresults.searchWords[1] + "and sometimes: " + dbresults.searchWords[2] + ".",
-        };
-        let resume3 = {
-          company: company,
-          name: "larry",
-          resume: "i am this guy, i use keywords: " + dbresults.searchWords[0] + "and sometimes: " + dbresults.searchWords[2] + ".",
-        };
+          // call a scrape() from "./scrapeData.js".
+          // req.body.location = "linkedin url".
+          //=========================================================
+          let resume1 = {
+            company: company,
+            name: "roger",
+            resume: "i am this guy, i use keywords: " + dbresults.searchWords[0] + "and sometimes: " + dbresults.searchWords[1] + ".",
+          };
+          let resume2 = {
+            company: company,
+            name: "kevin",
+            resume: "i am this guy, i use keywords: " + dbresults.searchWords[1] + "and sometimes: " + dbresults.searchWords[2] + ".",
+          };
+          let resume3 = {
+            company: company,
+            name: "larry",
+            resume: "i am this guy, i use keywords: " + dbresults.searchWords[0] + "and sometimes: " + dbresults.searchWords[2] + ".",
+          };
 
-        let matches = [resume1, resume2, resume3];
-//==================================================
-        for (var i = 0; i < matches.length; i++) {
-          companyResults.create(matches[i])
-          .then(uploaded => {
-            console.log("match uploaded");
-            console.log(uploaded);
-          })
-          
-        }
+          let matches = [resume1, resume2, resume3];
+          //==================================================
+          for (var i = 0; i < matches.length; i++) {
+            companyResults.create(matches[i])
+              .then(uploaded => {
+                console.log("match uploaded");
+                console.log(uploaded);
+                resolve(uploaded);
+              })
 
-     
-      })
+          }
+
+        });
+    })
 
 
   },
