@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const companyRequirements = require("../../controllers/companyRequirementsController");
 
-
+ // Matches with "/api/companyrequirements"
 router.route("/")
   .get((req, res) => {
     console.log("a request for all companies.")
@@ -12,7 +12,7 @@ router.route("/")
 
   router.route("/")
   .post((req, res) => {
-    console.log("!!!!!!!!!!")
+    console.log("post request to create")
     console.log(req.body)
 
     companyRequirements.create(req.body)
