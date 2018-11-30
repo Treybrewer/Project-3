@@ -10,8 +10,13 @@ module.exports = {
   },
   findByCompany: function (company) {
     return db.CompanyRequirementsModel
-      .findById(company)
+      .findOne({ company: company })
   },
+
+  // findByCompany: function (company) {
+  //   return db.CompanyRequirementsModel
+  //     .findById(company)
+  // },
   create: function (data) {
     console.log("companyRequirementsController.js.create");
     console.log(data);

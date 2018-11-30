@@ -1,26 +1,48 @@
 const router = require("express").Router();
-const operations = require("../../logicController/operations");
+const operations = require("../../logicController/operationsController");
+const operationsController = require("../../logicController/operationsController");
 
 // Matches with "/api/operations"
 
-
-
 router.route("/")
+.get((req, res) => {
+  console.log("search for matches for all companies");
+  operationsController.runAllCompaniesForMatches()
+  .then(data => res.json(data))
+});
 
-  .post((req,res) => {
+
+router.route("/:company")
+
+  .get((req,res) => {
     console.log("match search for specific company");
-    console.log(req.body)
-    operations.runSpecificCompanyforMatch(res.body)
+    console.log(req.params.company)
+    let company = req.params.company;
+    operationsController.runSpecificCompanyforMatch(req.params.company)
+    .then(data => {
+      console.log("this is in operationsAPI.js")
+      console.log(data);
+      res.json(data)
+    })
 
-  })
-  // .get(operations.runAllCompaniesForMatches)
-  .post(operations.runAllCompaniesForMatches);
+  });
 
-// Matches with "/api/operations/:id"
-router
-  .route("/:id")
-  // .get(operations.findById)
-  .put(operations.runSpecificCompanyforMatch)
-  // .delete(operations.remove);
+  module.exports = router;
 
-module.exports = router;
+
+
+
+
+
+// router.route("/:company")
+
+//   .post((req,res) => {
+//     console.log("match search for specific company");
+//     console.log(req.params.company)
+//     let company = req.params.company;
+//     operations.runSpecificCompanyforMatch(req.params.company)
+
+//   });
+  
+
+
