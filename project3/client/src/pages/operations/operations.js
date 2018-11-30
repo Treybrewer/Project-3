@@ -76,7 +76,8 @@ export default class Operations extends React.Component {
         `)
 
 
-    API.updateCompany(this.state.company,
+    API.updateCompany(
+      this.state.company,
       {
         company: updatedCompany,
         searchWords: updatedSearchWords
@@ -95,7 +96,8 @@ export default class Operations extends React.Component {
       makeChanges: false,
       newCompanyName: '',
       newSearchWords: '',
-    })
+    });
+    this.showAllCompanies();
   };
 
   makeChanges = (company, searchWords) => {
@@ -111,6 +113,19 @@ export default class Operations extends React.Component {
     })
 
   };
+
+  removeCompany = (company) => {
+    console.log("starting to delete company")
+
+    API.deleteCompany(company)
+    .then(res => {
+      console.log("this is the return for deleteCompany()")
+      console.log(res.data)
+      this.showAllCompanies();
+    })
+    .catch(err => console.log(err));
+
+  }
 
   render() {
     return (
@@ -147,7 +162,7 @@ export default class Operations extends React.Component {
                   newSearchWords={this.state.newSearchWords}
 
                   handleInputChange={this.change}
-                  handleFormSubmit={this.handleFormSubmit}
+                  handleFormSubmit={this.onSubmit}
                 />
 
 
