@@ -22,6 +22,24 @@ module.exports = {
     let name = req.params.company;
     console.log("this is the company: " + name)
 
+
+
+      // findbyid, company
+        // get keywords from that company
+
+      // scrape linkedin
+      //  save into a var array
+
+
+      // function to match keyword
+
+      //  save the matches to db.companymatches
+
+      // res.(finished)
+
+
+
+
     // call a scrape() from "./scrapeData.js".
     // req.body.location = "linkedin url".
     scrapeData.performScrape(req.body.location)

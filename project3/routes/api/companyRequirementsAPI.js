@@ -3,6 +3,7 @@ const companyRequirements = require("../../controllers/companyRequirementsContro
 
 // Matches with "/api/companyrequirements"
 router.route("/")
+
   .get(companyRequirements.findAll)
   .post(companyRequirements.create);
 
@@ -14,3 +15,11 @@ router
   .delete(companyRequirements.remove);
 
 module.exports = router;
+
+
+// router.route("/")
+//   .get((req, res) => {
+//     companyRequirements.findAll()
+//       .then(dbresults => res.json(dbresults))
+//       .catch(err => res.status(422).json(err))
+//   })

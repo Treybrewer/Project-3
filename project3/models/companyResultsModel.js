@@ -9,12 +9,13 @@ const companyResultsSchema = new Schema({
   name: { type: String },
   resume: [ String ],
 
+    // add a saved: false,
 
   // date: { type: Date, default: Date.now }
 
 
 });
 
-const CompanyResultsModel = mongoose.model("CompanyResultsModel", companyResultsSchema);
+const CompanyResultsModel = mongoose.model("CompanyResults", companyResultsSchema);
 
 module.exports = CompanyResultsModel;

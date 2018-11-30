@@ -16,6 +16,6 @@ router.use("/companyresults", companyResultsRoutes);
 
 
 // searchResults routes
-router.use("/searchresults", searchResultsRoutes);
+// router.use("/searchresults", searchResultsRoutes);
 
 module.exports = router;

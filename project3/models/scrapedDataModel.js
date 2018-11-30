@@ -16,6 +16,6 @@ const scrapedDataSchema = new Schema({
 
 });
 
-const ScrapedDataModel = mongoose.model("ScrapedDataModel", scrapedDataSchema);
+const ScrapedDataModel = mongoose.model("ScrapedData", scrapedDataSchema);
 
 module.exports = ScrapedDataModel;

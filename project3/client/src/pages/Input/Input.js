@@ -4,7 +4,7 @@ import "./input.css";
 
 /* Import Components */
 
-export default class Form extends React.Component {
+export default class Input extends React.Component {
   state = {
     company: '',
     searchWords: '',
@@ -19,11 +19,27 @@ change = (event) => {
 
 onSubmit = event => {
   event.preventDefault();
+  
+// this will remove spaces and ,'s from the searchwords input
+  let searchWordsArray = [];
+  searchWordsArray = this.state.searchWords.split(/[ ,]+/);
+    console.log("this is the keywords array");
+    console.log(searchWordsArray)
+//----------------------------------------------
+
   API.addNewCompany({
     company: this.state.company,
-    searchWords: this.state.searchWords
+    searchWords: searchWordsArray
   })
+  .then(res => {
+    console.log("this is the return for addNewCompany()")
+    console.log(res.data)
+    
+  })
+  .catch(err => console.log(err));
   console.log("hello I am showing up");
+
+
   this.setState({
     company: '',
     searchWords: '',
