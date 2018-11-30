@@ -10,7 +10,20 @@ module.exports = {
     let data = [];
 
 
-
+      data = [
+        {
+          resumeName: "Trey",
+          resume: "words words more words react node words",
+        },
+        {
+          resumeName: "Holland",
+          resume: "words words more words express handlebars words",
+        },
+        {
+          resumeName: "Brian",
+          resume: "words words more words html css bootstrap words",
+        }
+      ]
 
     
      return data;
