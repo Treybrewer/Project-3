@@ -1,5 +1,7 @@
 module.exports = {
-  ScrapedDataModel: require("./scrpaedDataModel"),
+  ScrapedDataModel: require("./companyResultsModel"),
+
+
   CompanyRequirementsModel: require("./companyRequirementsModel"),
   CompanyResultsModel: require("./companyResultsModel"),
 };

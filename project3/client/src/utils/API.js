@@ -14,11 +14,12 @@ allCompanies: function() {
 },
 
 updateCompany: function(company, data) {
-  return axios.put("/api/companyrequirements" + company , data);
+  return axios.put("/api/companyrequirements/" + company , data);
 },
 
 deleteCompany: function(company) {
-  return axios.delete("/api/compayrequirements/" + company );
+  console.log("!!!! company to delete: " + company);
+  return axios.delete("/api/companyrequirements/" + company );
 },
 
 returnSpecificCompany: function(company) {

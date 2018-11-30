@@ -1,16 +1,68 @@
 const router = require("express").Router();
 const companyRequirements = require("../../controllers/companyRequirementsController");
 
-// Matches with "/api/companyrequirements"
+
 router.route("/")
-  .get(companyRequirements.findAll)
-  .post(companyRequirements.create);
+  .get((req, res) => {
+    console.log("a request for all companies.")
+    companyRequirements.findAll()
+      .then(dbresults => res.json(dbresults))
+      .catch(err => res.status(422).json(err))
+  })
 
-// Matches with "/api/books/:id"
-router
-  .route("/:id")
-  .get(companyRequirements.findById)
-  .put(companyRequirements.update)
-  .delete(companyRequirements.remove);
+  router.route("/")
+  .post((req, res) => {
+    console.log("!!!!!!!!!!")
+    console.log(req.body)
 
-module.exports = router;
+    companyRequirements.create(req.body)
+      .then(dbresults => res.json(dbresults))
+      .catch(err => res.status(422).json(err))
+  });
+
+  router.route("/:company")
+
+  .get((req, res) => {
+    companyRequirements.findByCompany(req.body.company)
+      .then(dbresults => res.json(dbresults))
+      .catch(err => res.status(422).json(err))
+  })
+
+  router.route("/:company")
+  .put((req, res) => {
+    console.log("this is updating companyrequirements info")
+    console.log(req.params.company)
+    console.log(req.body)
+    companyRequirements.update(req.params.company, req.body)
+      .then(dbresults => res.json(dbresults))
+      .catch(err => res.status(422).json(err))
+  })
+
+  router.route("/:company")
+  .delete((req, res) => {
+    console.log("this is req to delete company");
+    console.log(req.params.company)
+    companyRequirements.remove(req.params.company)
+      .then(dbresults => res.json(dbresults))
+      .catch(err => res.status(422).json(err))
+  })
+
+
+  module.exports = router;
+
+  //===================================
+
+//   // Matches with "/api/companyrequirements"
+// router.route("/")
+
+// .get(companyRequirements.findAll)
+// .post(companyRequirements.create);
+
+// // Matches with "/api/books/:id"
+// router
+// .route("/:id")
+// .get(companyRequirements.findById)
+// .put(companyRequirements.update)
+// .delete(companyRequirements.remove);
+
+// module.exports = router;

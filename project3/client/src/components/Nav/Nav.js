@@ -3,11 +3,11 @@ import "./nav.css";
 const Nav = () => (
   <nav>
    <div className="topNav">
-    <a href="/">Trey's Business Solutions</a>
+    <a href="/">HorseShoe Business Solutions</a>
      <a href="/">Home</a>
-     <a href="#">Input</a>
-     <a href="#">Operations</a>
-     <a href="#">Admin</a>
+     <a href="/input">Input</a>
+     <a href="/operations">Operations</a>
+     <a href="/admin">Admin</a>
     </div>
 
     </nav>

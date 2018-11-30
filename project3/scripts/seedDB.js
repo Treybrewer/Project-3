@@ -8,17 +8,23 @@ mongoose.connect(
   "mongodb://localhost/reactreadinglist"
 );
 
-const scrapeddatamodelSeed = [
+const companyRequirementsmodelSeed = [
   {
-    resume: "resume placeholder",
+    company: "lowes",
+    searchWords: ["node", "express", "react"],
+    date: new Date(Date.now())
+  },
+  {
+    company: "wells",
+    searchWords: ["basic", "css", "html"],
     date: new Date(Date.now())
   },
  
 ];
 
-db.scrapeddatamodel
+db.CompanyRequirementsModel
   .remove({})
-  .then(() => db.scrapeddatamodel.collection.insertMany(scrapeddatamodelSeed))
+  .then(() => db.CompanyRequirementsModel.collection.insertMany(companyRequirementsmodelSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);

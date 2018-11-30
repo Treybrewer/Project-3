@@ -12,6 +12,6 @@ const companyRequirementsSchema = new Schema({
 
 });
 
-const CompanyRequirementsModel = mongoose.model("CompanyRequirementsModel", companyRequirementsSchema);
+const CompanyRequirementsModel = mongoose.model("CompanyRequirements", companyRequirementsSchema);
 
 module.exports = CompanyRequirementsModel;
