@@ -7,7 +7,9 @@ router.route("/")
   .get((req, res) => {
     console.log("a request for all results.")
     companyResults.findAll()
-      .then(dbresults => res.json(dbresults))
+      .then(dbresults => {
+        
+        res.json(dbresults)})
       .catch(err => res.status(422).json(err))
   });
 
@@ -26,8 +28,13 @@ router.route("/")
 router.route("/:company")
 
   .get((req, res) => {
-    companyResults.findByCompany(req.body.company)
-      .then(dbresults => res.json(dbresults))
+    console.log("a request for company results.")
+    console.log(req.params.company)
+    companyResults.findByCompany(req.params.company)
+    .then(dbresults => {
+      console.log("$$$$$$$")
+      console.log(dbresults)
+      res.json(dbresults)})
       .catch(err => res.status(422).json(err))
   });
 

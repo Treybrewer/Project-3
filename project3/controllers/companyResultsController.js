@@ -6,13 +6,14 @@ const db = require("../models");
 module.exports = {
 
   findAll: function () {
+    console.log("$$$$$$$$$$$")
     return db.CompanyResultsModel
       .find({})
       // .sort({ date: -1 })
   },
   findByCompany: function (company) {
     return db.CompanyResultsModel
-      .findById(company)
+      .find({ company: company })
   },
   create: function (data) {
     console.log("companyResultsController.js.create");
@@ -25,7 +26,7 @@ module.exports = {
     console.log(company);
     console.log(data);
     return db.CompanyResultsModel
-      .findOneAndUpdate({ company: company }, data, {new: true})
+      .findOneAndUpdate({ company: company }, data, {upsert: true})
   },
   remove: function (company) {
     console.log("removing this one: " + company)

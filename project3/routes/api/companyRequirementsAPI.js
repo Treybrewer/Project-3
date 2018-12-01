@@ -23,7 +23,7 @@ router.route("/")
   router.route("/:company")
 
   .get((req, res) => {
-    companyRequirements.findByCompany(req.body.company)
+    companyRequirements.findByCompany(req.params.company)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   })

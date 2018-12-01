@@ -52,9 +52,11 @@ deleteCompanyResult: function(company) {
 
 
 runSpecificMatch: function(company) {
-  return axios.put("/api/operations" + company);
+  return axios.get("/api/operations/" + company);
 },
 
+
+// may note use this function client side.
 runAllMatches: function() {
   return axios.post("/api/operations");
 },
