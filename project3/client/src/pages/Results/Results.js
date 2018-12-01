@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./results.css";
+import ResultsSelection from '../../components/ResultsSelection';
+import ResultsList from '../../components/ResultsList';
+import ResultsToolBar from '../../components/ResultsToolBar/ResultsToolBar';
+
 
 /* Import Components */
 
@@ -96,44 +100,33 @@ export default class Results extends React.Component {
         <h1>page to perform searches for selected company</h1>
         <div className="row">
           <div className="col-6">
-            <div>List of all companies</div>
-            <ul>
-              {this.state.allCompanies.map(company => (
-                <li key={company.company}>
-                  <div>Company Name: {company.company}</div>
-                  <div>Search Terms: {company.searchWords}</div>
-                  <button onClick={() => this.runSearch(company.company)}>Run Search</button>
+
+            <ResultsSelection
+              allCompanies={this.state.allCompanies}
+              runSearch={this.runSearch}
+            />
 
 
-                  <br></br>
-                  <div>______________________________________</div>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="col-6">
             {this.state.showSearchingWindow ? (
               <div>
-                <h1>Searching for matches for: {this.state.currentCompany}</h1>
-                <br></br>
-                <button onClick={this.closeWindow}>Close Search</button>
-                <button onClick={() => this.viewResults(this.state.currentCompany)}>View Results</button>
-                <br />
+
+                <ResultsToolBar
+                  currentCompany={this.state.currentCompany}
+                  closeWindow={this.closeWindow}
+                  viewResults={this.viewResults}
+
+                />
 
                 {this.state.showResultsList ? (
-                  <ul>
-                    {this.state.companyMatches.map(resume => (
-                      <li key={resume.name}>
-                        <h4>{resume.name}</h4>
-                        <p>{resume.resume}</p>
-                        <div>________________________</div>
-                        <br />
-                      </li>
+
+                  <ResultsList
+                    companyMatches={this.state.companyMatches}
+                  />
 
 
-                    ))}
-                  </ul>
                 ) : (
                     <div></div>
                   )}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import UpdateForm from "../../components/UpdateForm";
+import UpdateList from "../../components/UpdateList";
 // import "./operations.css";
 
 /* Import Components */
@@ -88,7 +89,7 @@ export default class Operations extends React.Component {
 
       })
       .catch(err => console.log(err));
- 
+
 
     this.setState({
       company: '',
@@ -118,12 +119,12 @@ export default class Operations extends React.Component {
     console.log("starting to delete company")
 
     API.deleteCompany(company)
-    .then(res => {
-      console.log("this is the return for deleteCompany()")
-      console.log(res.data)
-      this.showAllCompanies();
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        console.log("this is the return for deleteCompany()")
+        console.log(res.data)
+        this.showAllCompanies();
+      })
+      .catch(err => console.log(err));
 
   }
 
@@ -132,29 +133,20 @@ export default class Operations extends React.Component {
       <div>
         <div className="row">
           <div className="col-6">
-            <div>List of all companies</div>
-            <ul>
-              {this.state.allCompanies.map(company => (
-                <li key={company.company}>
-                  <div>Company Name: {company.company}</div>
-                  <div>Search Terms: {company.searchWords}</div>
-                  <button onClick={() => this.makeChanges(company.company, company.searchWords)}>Update Info</button>
 
-                  <button onClick={() => this.removeCompany(company.company)}>Remove Company</button>
+            <UpdateList
+              allCompanies={this.state.allCompanies}
+              makeChanges={this.makeChanges}
+              removeCompany={this.removeCompany}
+            />
 
-                  <button onClick={() => this.runSearch(company.company)}>Run Search</button>
-                  <br></br>
-                  <div>______________________________________</div>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="col-6">
             {this.state.makeChanges ? (
               <div>
                 <UpdateForm
-                  
+
                   company={this.state.company}
                   searchWords={this.state.searchWords}
 
