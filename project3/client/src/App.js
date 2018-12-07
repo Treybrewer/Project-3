@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Input from "./pages/Input";
-import Results from "./pages/Results";
-import Update from "./pages/Update";
+import Admin from "./pages/Admin";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-
+import User from "./pages/User";
+import CreateTeam from "./pages/CreateTeam";
+import Employees from "./pages/Employees";
+import ModifyLogin from "./pages/ModifyLogin";
+import ViewTeam from "./pages/ViewTeam";
 
 
 
@@ -17,16 +19,21 @@ const App = () => (
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/results" component={Results} />
-        <Route exact path="/update" component={Update} />
-        <Route exact path="/input" component={Input} />
-        {/* <Route exact path="/books/:id" component={Results} /> */}
+        <Route exact path="/user" component={User} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/create" component={CreateTeam} />
+        <Route exact path="/employees" component={Employees} />
+        <Route exact path="/modifylogin" component={ModifyLogin} />
+
+        <Route exact path="/viewteam" component={ViewTeam} />
+
+
         {/* <Route component={NoMatch]]} /> */}
       </Switch>
     </div>
   </Router>
 
-  
+
 );
 
 export default App;
