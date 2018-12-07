@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Admin from "./pages/Admin";
 import Home from "./pages/Home";
-import NoMatch from "./pages/NoMatch";
+// import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import User from "./pages/User";
 import CreateTeam from "./pages/CreateTeam";

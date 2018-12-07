@@ -119,7 +119,15 @@ COLLECTION: teams
 
 
 
+-------------------------------------
 
+routes:
+
+- to create the team requirements: /api/teamrequirements
+
+- to view the results: /api/teams
+
+- to input/modify employees: /api/employees
 
 
 

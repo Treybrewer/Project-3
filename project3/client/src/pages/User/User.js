@@ -50,6 +50,10 @@ export default class User extends React.Component {
   render() {
     return (
       <div className="form-style">
+        <br />
+        <br />
+        <br />
+        <br />
         <div>This page need links to
           1-create team page
           2- view teams page
@@ -57,8 +61,13 @@ export default class User extends React.Component {
   </div>
 
         <a href="/create">Create a New Team</a>
+        <br />
         <a href="/viewteam">View Teams</a>
+        <br />
         <a href="/admin">Admin Page</a>
+        <br />
+        <br />
+        <a href="/user">Home</a>
       </div>
     );
   }

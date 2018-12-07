@@ -1,19 +1,19 @@
 const router = require("express").Router();
 const searchResultsRoutes = require("./searchResultsAPI");
-const createTeam = require("./createTeamAPI");
+const companyRequirementsRoutes = require("./companyRequirementsAPI");
 const operationsRoutes = require("./operationsAPI");
 const companyResultsRoutes = require("./companyResultsAPI");
 
 // companyRequirements routes
-router.use("/teamrequirements", createTeam);
+router.use("/companyrequirements", companyRequirementsRoutes);
 
 // companyResults routes
 // this link will return the matches
-router.use("/teams", companyResultsRoutes);
+router.use("/companyresults", companyResultsRoutes);
 
 
 // searchResults routes
-router.use("/employees", operationsRoutes);
+router.use("/operations", operationsRoutes);
 
 
 // searchResults routes
