@@ -35,12 +35,6 @@ export default class CreateTeam extends React.Component {
   onSubmit = event => {
     event.preventDefault();
 
-    // this will remove spaces and ,'s from the searchwords input
-    // let searchWordsArray = [];
-    // searchWordsArray = this.state.searchWords.split(/[ ,]+/);
-    //   console.log("this is the keywords array");
-    //   console.log(searchWordsArray)
-    //----------------------------------------------
     let data = [];
 
     if (this.state.language_1) {
@@ -79,7 +73,6 @@ export default class CreateTeam extends React.Component {
     }
 
 
-
     API.addNewTeam({
       teamName: this.state.teamName,
       teamStartDate: this.state.teamStartDate,
@@ -91,18 +84,40 @@ export default class CreateTeam extends React.Component {
       .then(res => {
         console.log("this is the return for create new team")
         console.log(res.data)
-
+        // redirect to user page
+        this.resetState();
+        this.redirectUserPage();
       })
       .catch(err => console.log(err));
-    console.log("hello I am showing up");
+ 
+  };
+
+  resetState = () => {
+    this.setState({
+      teamName: '',
+      teamStartDate: '',
+      teamEndDate: '',
+      language_1: "",
+      skill_1: "",
+      language_2: "",
+      skill_2: "",
+      language_3: "",
+      skill_3: "",
+      language_4: "",
+      skill_4: "",
+      language_5: "",
+      skill_5: "",
+      manager: "",
+      dateCreated: "",
+
+      assetsArray: [],
+    })
+  };
 
 
-    // this.setState({
-    //   company: '',
-    //   searchWords: '',
-    //   input: ''
-    // })
-  }
+  redirectUserPage = () => {
+    this.props.history.push("/user");
+  };
 
   render() {
     return (

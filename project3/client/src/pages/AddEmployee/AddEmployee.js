@@ -1,9 +1,9 @@
 import React, {Component} from 'react';  
 import API from '../../utils/API';
-import "./Employees.css";
+import "./AddEmployee.css";
 
 
-export default class Employees extends React.Component {
+export default class AddEmployee extends React.Component {
   state = {
     firstName: "",
     lastName: "",

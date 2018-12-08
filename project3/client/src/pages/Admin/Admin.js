@@ -64,7 +64,9 @@ export default class Admin extends React.Component {
             </div>
             <br />
 
-            <a href="/employees">Manage employees</a>
+            <a href="/addemployee">Add Employee</a>
+            <br />
+            <a href="/updateemployee">Update Employee</a>
             <br />
             <a href="/modifylogin">Update users/passwords</a>
             <br />

@@ -6,7 +6,7 @@ const employee = require("../../controllers/employeeController");
 
 router.route("/")
   .get((req, res) => {
-    console.log("a request for all companies.")
+    console.log("a request for all employees.")
     employee.findAll()
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
