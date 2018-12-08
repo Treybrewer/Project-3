@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import API from '../../utils/API';
 import "./Employees.css";
 
-/* Import Components */
 
 export default class Employees extends React.Component {
   state = {
@@ -35,13 +34,6 @@ change = (event) => {
 onSubmit = event => {
   event.preventDefault();
   
-// this will remove spaces and ,'s from the searchwords input
-  // let searchWordsArray = [];
-  // searchWordsArray = this.state.searchWords.split(/[ ,]+/);
-  //   console.log("this is the keywords array");
-  //   console.log(searchWordsArray)
-//----------------------------------------------
-
 let data = [];
 
     if (this.state.language_1) {
@@ -90,17 +82,29 @@ let data = [];
   .then(res => {
     console.log("this is the return for addNewEmployee()")
     console.log(res.data)
-    
   })
   .catch(err => console.log(err));
-  console.log("hello I am showing up");
+  
 
 
-  // this.setState({
-  //   company: '',
-  //   searchWords: '',
-  //   input: ''
-  // })
+  this.setState({
+    firstName: "",
+    lastName: "",
+    employeeNumber: "",
+    employeeAvailable: true,
+    employeeMugShot: "",
+
+    language_1: "",
+    skill_1: "",
+    language_2: "",
+    skill_2: "",
+    language_3: "",
+    skill_3: "",
+    language_4: "",
+    skill_4: "",
+    language_5: "",
+    skill_5: "",
+  })
 }
 
 render() {

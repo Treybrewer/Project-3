@@ -4,13 +4,13 @@ const db = require("../models");
 module.exports = {
 
   findAll: function () {
-    return db.CompanyRequirementsModel
+    return db.employeeModel
       .find({})
       // .sort({ date: -1 })
   },
-  findByCompany: function (company) {
-    return db.CompanyRequirementsModel
-      .findOne({ company: company })
+  findByEmployeeNumber: function (employeeNumber) {
+    return db.employeeModel
+      .findOne({ employeeNumber: employeeNumber })
   },
 
   // findByCompany: function (company) {
@@ -18,22 +18,22 @@ module.exports = {
   //     .findById(company)
   // },
   create: function (data) {
-    console.log("companyRequirementsController.js.create");
+    console.log("teamRequirementsController.js.create");
     console.log(data);
-    return db.CompanyRequirementsModel
+    return db.employeeModel
       .create(data)
   },
-  update: function (company, data) {
-    console.log("companyrequirementscontroller.js ")
-    console.log(company);
+  update: function (employeeNumber, data) {
+    console.log("teamrequirementscontroller.js ")
+    console.log(employeeNumber);
     console.log(data);
-    return db.CompanyRequirementsModel
-      .findOneAndUpdate({ company: company }, data, {new: true})
+    return db.employeeModel
+      .findOneAndUpdate({ employeeNumber: employeeNumber }, data, {new: true})
   },
-  remove: function (company) {
-    console.log("removing this one: " + company)
-    return db.CompanyRequirementsModel
-    .findOneAndRemove({company: company})
+  remove: function (employeeNumber) {
+    console.log("removing this one: " + employeeNumber)
+    return db.employeeModel
+    .findOneAndRemove({employeeNumber: employeeNumber})
       // .findById({ company: company })
       // .then(dbModel => dbModel.remove())
   }
