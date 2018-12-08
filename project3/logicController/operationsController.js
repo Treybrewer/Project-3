@@ -5,7 +5,7 @@ const scrapeData = require("./scrapeData");
 
 
 const db = require("../models");
-const companyRequirements = require("../controllers/companyRequirementsController");
+const companyRequirements = require("../controllers/teamRequirementsController");
 const companyResults = require("../controllers/companyResultsController");
 const createMatches = require("../logicController/createMatches");
 
