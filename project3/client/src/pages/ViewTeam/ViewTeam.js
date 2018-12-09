@@ -12,27 +12,42 @@ export default class ViewTeam extends React.Component {
 
   componentDidMount = () => {
     this.setTeamName();
-    this.getTeam();
+    this.getSpecificTeam(this.state.teamName)
   };
 
   setTeamName = () => {
-    console.log(this.props.location.state.teamName)
+
     this.setState({
-      teamName: this.props.location.state.teamName
+      teamArray: []
     })
+
+    console.log(this.props.location.state.teamName)
+    if (this.props.location.state.teamName) {
+      this.setState({
+        teamName: this.props.location.state.teamName
+      })
+      this.getSpecificTeam(this.state.teamName)
+    } else {
+      console.log("no team array is present")
+    }
+
   }
 
 
-  getTeam = () => {
-    API.getTeam()
+  getSpecificTeam = (teamName) => {
+    API.getSpecificTeam(teamName)
       .then(res => {
-        console.log("this is the return for getteam()")
+        console.log("this is the return for getSpecificteam()")
         console.log(res.data)
         this.setState({
           teamArray: res.data,
         })
       })
       .catch(err => console.log(err));
+  };
+
+  viewTeam = () => {
+    this.getSpecificTeam(this.state.teamName);
   };
 
 
@@ -84,32 +99,30 @@ export default class ViewTeam extends React.Component {
             <h3 className="text-center">Team Members</h3>
             <h4 className="text-center">Team: {this.state.teamName}</h4>
 
-            {this.state.teamArray ? (
-              <ul>
-                {this.state.teamArray.map(person => (
-                  <li key={person.employeeNumber}>
-                    <h4>{person.firstName} {person.lastName}</h4>
+            
 
-                    {/* {!person.addedToTeam ? (
-                      <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
-                    ) : (
-                        <button onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
-                      )} */}
+            <ul>
+              {this.state.teamArray.map(details => (
+                <li key={details.teamName}>
+                  <div>Team Manager: {details.manager}</div>
+                  <div>Start Date: {details.startDate}</div>
+                  <div>End Date: {details.endDate}</div>
 
-
-
-                    <br />
-                  </li>
-
-
+                  <br />
+                  <ul>
+                    {details.members.map(person => (
+                      <li key={person.employeeNumber}>
+                        <div>Name: {person.firstName} {person.lastName}</div>
+                      </li>
+                    ))}
+                  </ul>
+                  <hr/>
+                </li>
+             
                 ))}
-              </ul>
-            ) : (
-                <div>no Team to display</div>
-              )}
+            </ul>
 
-
-
+            
           </div>
         </div>
 
@@ -120,3 +133,6 @@ export default class ViewTeam extends React.Component {
     );
   }
 }
+
+
+

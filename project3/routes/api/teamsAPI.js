@@ -21,12 +21,19 @@ router.route("/")
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   });
+  
 
   router.route("/:teamname")
-
   .get((req, res) => {
-    employee.findByTeamName(req.params.teamname)
-      .then(dbresults => res.json(dbresults))
+    teams.findByTeamName(req.params.teamname)
+    // .populate("employees")
+      .then(dbresults => {
+        console.log("this is the team array")
+        console.log(dbresults);
+        res.json(dbresults)
+      })
+        
+      
       .catch(err => res.status(422).json(err))
   })
 
@@ -44,7 +51,7 @@ router.route("/")
   .delete((req, res) => {
     console.log("this is req to delete teamname");
     console.log(req.params.teamname)
-    employee.remove(req.params.teamname)
+    teams.remove(req.params.teamname)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   })

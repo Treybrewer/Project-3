@@ -51,6 +51,7 @@ updateTeamPool: function(employeeNumber, data) {
 },
 
 
+
 updateTeam: function(teamName, data) {
   console.log("update team with employees")
   console.log(teamName)
@@ -59,6 +60,9 @@ updateTeam: function(teamName, data) {
   return axios.put("/api/teams/"+teamName, data);
 },
 
+getSpecificTeam: function(teamName) {
+  return axios.get("/api/teams/"+teamName);
+},
 
 getTeam: function() {
   return axios.get("/api/teams");

@@ -11,17 +11,18 @@ module.exports = {
   findByTeamName: function (teamName) {
     return db.teamModel
       .findOne({ teamName: teamName })
+      .populate("Employee")
   },
 
   create: function (data) {
-    console.log("teamRequirementsController.js.create");
+    console.log("teamController.js.create");
     console.log(data);
     return db.teamModel
       .create(data)
   },
 
   update: function (teamName, data) {
-    console.log("teamrequirementscontroller.js ")
+    console.log("teamcontroller.js ")
     console.log(teamName);
     console.log(data);
     return db.teamModel
