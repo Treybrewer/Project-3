@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./ModifyTeam.css";
+import Axios from 'axios';
 
 /* Import Components */
 
@@ -9,32 +10,59 @@ export default class ModifyTeam extends React.Component {
     teamPoolArray: [],
 
     currentTeamArray: [],
+
+    teamName: "",
+
+    startBuilding: false,
+
+    manager: "",
+    teamStartDate: "",
+    teamEndDate: "",
   };
 
   componentDidMount = () => {
-    this.teamPool();
-    this.currentTeam();
+    // this.teamPool();
+    // this.currentTeam();
   };
 
-  teamPool = () => {
-    API.getTeamPool()
+
+
+  teamPool = (name) => {
+    // let name = "alpha";
+    API.getSpecificTeamPool(name)
       .then(res => {
-        console.log("this is the return for getteampool()")
+        console.log("this is the return for getspecificteampool()")
         console.log(res.data)
         this.setState({
-          teamPoolArray: res.data
+          teamPoolArray: res.data,
         })
         this.currentTeam();
       })
+
       .catch(err => console.log(err));
   };
 
 
-  change = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
+  // teamPool = () => {
+  //   API.getAllTeamPool()
+  //     .then(res => {
+  //       console.log("this is the return for getteampool()")
+  //       console.log(res.data)
+  //       this.setState({
+  //         teamPoolArray: res.data,
+  //       })
+  //       this.currentTeam();
+  //     })
+
+  //     .catch(err => console.log(err));
+  // };
+
+
+  // change = (event) => {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   });
+  // }
 
   addToTeam = (employeeNumber) => {
     console.log("this is the add to team #: " + employeeNumber);
@@ -88,40 +116,64 @@ export default class ModifyTeam extends React.Component {
       }
     }
 
-    
+
   };
+
+  // need to get all this data saved to the team collection
+  // it didnt send first/last name????
+
+  // need to figure out why the page doesnt respond when clicking add to team buttons.
 
   submitTeam = () => {
     console.log("submitting team")
-    for(var i = 0; i < this.state.currentTeamArray.length; i++) {
+    for (var i = 0; i < this.state.currentTeamArray.length; i++) {
       API.saveTeam({
-        // gotta figure out getting teh data here
+        teamName: this.state.currentTeamArray[i].teamName,
+        manager: this.state.currentTeamArray[i].manager,
+        startDate: this.state.teamStartDate,
+        endDate: this.state.teamEndDate,
+        firstName: this.state.currentTeamArray[i].firstName,
+        lastName: this.state.currentTeamArray[i].lastName,
+        employeeNumber: this.state.currentTeamArray[i].employeeNumber,
+        assets: this.state.currentTeamArray[i].assets,
 
-        // teamName: { type: String },
-        // manager: { type: String },
-        // startDate: { type: String },
-        // endDate: { type: String },
-        
-        // members: [ {
-        //   type: Schema.Types.ObjectId,
-        //   ref: "Employees"
-        // } ],
-
-
-
-
+        manager: this.state.manager,
       })
-
+        .then(res => {
+          console.log("saved to team collection")
+        })
+        .catch(err => console.log(err));
     }
+  };
 
+  change = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
 
-    
+  startBuildingTeam = (teamName) => {
+    console.log(`start building ${teamName}.`)
+    this.setState({
+      startBuilding: true
+    })
 
+    this.teamPool(teamName);
+
+    API.getSpecificTeamRequirements(teamName)
+      .then(res => {
+        console.log("this is the return for getspecificteam requirements()")
+        console.log(res.data)
+        this.setState({
+          manager: res.data.manager,
+          teamStartDate: res.data.teamStartDate,
+          teamEndDate: res.data.teamEndDate,
+        })
+      })
+      .catch(err => console.log(err));
 
   };
 
-
- 
 
 
   redirectUserPage = () => {
@@ -136,70 +188,86 @@ export default class ModifyTeam extends React.Component {
         <br />
         <br />
         <br />
-        <h1 className="text-center">Team Pool</h1>
-        
+        <h1 className="text-center">Team Creating Page</h1>
+        <h4>Enter Team Name</h4>
+        <input
+          name='teamName'
+          placeholder='"Enter team name"'
+          value={this.state.teamName}
+          onChange={event => this.change(event)}
+        />
+        <button onClick={() => this.startBuildingTeam(this.state.teamName)}>Start Building Team</button>
+
         <br />
 
-        <div className="row">
-          <div className="col-6">
-            <h4>Select team from this list</h4>
-            <ul>
-              {this.state.teamPoolArray.map(person => (
-                <li key={person.employeeNumber}>
-                  <h4>{person.firstName} {person.lastName}</h4>
+        {this.state.startBuilding ? (
 
-                  {!person.addedToTeam ? (
-                    <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
-                  ) : (
-                      <button onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
-                    )}
-
-
-                  <div>________________________</div>
-                  <br />
-                </li>
-
-
-              ))}
-            </ul>
-
-          </div>
-
-          <div className="col-6">
-            <h4>Current Team Members</h4>
-
-            {this.state.currentTeamArray.length ? (
-              <div>
+          <div className="row">
+            <div className="col-6">
+              <h4>Select team from this list</h4>
               <ul>
+                {this.state.teamPoolArray.map(person => (
+                  <li key={person.employeeNumber}>
+                    <h4>{person.firstName} {person.lastName}</h4>
 
-                {
-                  this.state.currentTeamArray.map(person => (
-                    <li key={person.employeeNumber}>
-                      <h4>{person.firstName} {person.lastName}</h4>
-
-                      <br />
-                    </li>
+                    {!person.addedToTeam ? (
+                      <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
+                    ) : (
+                        <button onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
+                      )}
 
 
-                  ))
-                }
+                    <div>________________________</div>
+                    <br />
+                  </li>
+
+
+                ))}
               </ul>
-              <br/>
-              <div className="text-center">
-              <button onClick={this.submitTeam}>Save Team</button>
-              </div>
+
+            </div>
+
+            <div className="col-6">
+              <h4>Current Team Members</h4>
+
+              {this.state.currentTeamArray.length ? (
+                <div>
+                  <ul>
+
+                    {
+                      this.state.currentTeamArray.map(person => (
+                        <li key={person.employeeNumber}>
+                          <h4>{person.firstName} {person.lastName}</h4>
+
+                          <br />
+                        </li>
+
+
+                      ))
+                    }
+                  </ul>
+                  <br />
+                  <div className="text-center">
+                    <button onClick={this.submitTeam}>Save Team</button>
+                  </div>
 
 
                 </div>
-            ) : (
-                <div>No team members selected yet bro</div>
-              )}
+              ) : (
+                  <div>No team members selected yet bro</div>
+                )}
 
 
+
+            </div>
 
           </div>
 
-        </div>
+        ) : (
+            <div>no team selected</div>
+          )}
+
+
 
 
 

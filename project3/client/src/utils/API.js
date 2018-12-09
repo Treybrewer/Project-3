@@ -9,6 +9,11 @@ addNewTeam: function(data) {
   return axios.post("/api/teamrequirements", data);
 },
 
+getSpecificTeamRequirements: function(teamName) {
+  console.log("getting specif team requirement for: " +teamName);
+  return axios.get("/api/teamrequirements/"+teamName);
+},
+
 
 
 
@@ -32,7 +37,12 @@ deleteEmployee: function(employeeNumber) {
 
 
 
-getTeamPool: function() {
+
+getSpecificTeamPool: function(teamName) {
+return axios.get("/api/pool/"+teamName);
+},
+
+getAllTeamPool: function() {
   return axios.get("/api/pool");
 },
 

@@ -8,9 +8,9 @@ module.exports = {
       .find({})
       // .sort({ date: -1 })
   },
-  findByEmployeeNumber: function (employeeNumber) {
+  findByTeamName: function (teamname) {
     return db.poolModel
-      .findOne({ employeeNumber: employeeNumber })
+      .find({ teamName: teamname })
   },
 
  

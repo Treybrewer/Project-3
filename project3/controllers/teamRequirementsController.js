@@ -8,9 +8,9 @@ module.exports = {
       .find({})
       // .sort({ date: -1 })
   },
-  findByTeam: function (team) {
+  findByTeamName: function (teamName) {
     return db.teamRequestModel
-      .findOne({ team: team })
+      .findOne({ teamName: teamName })
   },
 
   // findByCompany: function (company) {
