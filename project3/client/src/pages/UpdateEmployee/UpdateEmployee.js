@@ -52,9 +52,9 @@ export default class UpdateEmployee extends React.Component {
   }
 
 
-// need to get the previous employee info to show on the update form
-// then compare if changes were mande or to use the extisting data
-// before sending to the server.
+  // need to get the previous employee info to show on the update form
+  // then compare if changes were mande or to use the extisting data
+  // before sending to the server.
 
 
 
@@ -99,15 +99,15 @@ export default class UpdateEmployee extends React.Component {
     }
 
 
-    API.updateEmployee( this.state.employeeNumber,
-      
+    API.updateEmployee(this.state.employeeNumber,
+
       {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      employeeNumber: this.state.employeeNumber,
-      employeeAvailable: this.state.employeeAvailable,
-      assets: data,
-    })
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        employeeNumber: this.state.employeeNumber,
+        employeeAvailable: this.state.employeeAvailable,
+        assets: data,
+      })
       .then(res => {
         console.log("this is the return for addNewEmployee()")
         console.log(res.data)
@@ -145,7 +145,7 @@ export default class UpdateEmployee extends React.Component {
       if (employeeNumber === this.state.allEmployeesArray[i].employeeNumber) {
         this.setState({
           firstName: this.state.allEmployeesArray[i].firstName,
-          lastName: this.state.allEmployeesArray[i].lasttName,
+          lastName: this.state.allEmployeesArray[i].lastName,
           employeeNumber: this.state.allEmployeesArray[i].employeeNumber,
           employeeAvailable: this.state.allEmployeesArray[i].employeeAvailable,
           employeeMugShot: this.state.allEmployeesArray[i].employeeMugShot,
@@ -170,31 +170,39 @@ export default class UpdateEmployee extends React.Component {
         updateWindow: true
       })
     } else {
-      this.setState({
-        updateWindow: false,
-        firstName: "",
-        lastName: "",
-        employeeNumber: "",
-        employeeAvailable: true,
-        employeeMugShot: "",
+      // this.setState({
+      //   updateWindow: false,
+      //   firstName: "",
+      //   lastName: "",
+      //   employeeNumber: "",
+      //   employeeAvailable: true,
+      //   employeeMugShot: "",
 
-        language_1: "",
-        skill_1: "",
-        language_2: "",
-        skill_2: "",
-        language_3: "",
-        skill_3: "",
-        language_4: "",
-        skill_4: "",
-        language_5: "",
-        skill_5: "",
+      //   language_1: "",
+      //   skill_1: "",
+      //   language_2: "",
+      //   skill_2: "",
+      //   language_3: "",
+      //   skill_3: "",
+      //   language_4: "",
+      //   skill_4: "",
+      //   language_5: "",
+      //   skill_5: "",
 
-      })
+      // })
     }
 
   };
 
-  removeEmployee = () => {
+  removeEmployee = (employeeNumber) => {
+    console.log(employeeNumber);
+
+    API.deleteEmployee(employeeNumber)
+    .then(res => {
+      console.log("this is the return for deleteEmployee()")
+      console.log(res.data)
+    })
+    .catch(err => console.log(err));
 
   };
 
@@ -211,6 +219,8 @@ export default class UpdateEmployee extends React.Component {
           <div className="col-3">
             <UpdateEmployeeList
               allEmployeesArray={this.state.allEmployeesArray}
+              removeEmployee={this.removeEmployee}
+              makeChanges={this.makeChanges}
             />
 
           </div>
@@ -221,13 +231,13 @@ export default class UpdateEmployee extends React.Component {
             ) : (
 
                 <form>
-                  <h1 className="text-center">Add New Employee</h1>
+                  <h1 className="text-center">Update Employee</h1>
                   <br />
 
                   <h4>First Name</h4>
                   <input
                     name='firstName'
-                    placeholder='"first name"'
+                    // placeholder={this.state.firstName}
                     value={this.state.firstName}
                     onChange={event => this.change(event)}
                   />
@@ -235,7 +245,7 @@ export default class UpdateEmployee extends React.Component {
                   <h4>Last Name</h4>
                   <input
                     name='lastName'
-                    placeholder='"last name"'
+                    // placeholder={this.state.lastName}
                     value={this.state.lastName}
                     onChange={event => this.change(event)}
                   />
@@ -243,11 +253,12 @@ export default class UpdateEmployee extends React.Component {
                   <h4>Employee Number</h4>
                   <input
                     name='employeeNumber'
-                    placeholder='"Employee Number"'
+                    // placeholder='"Employee Number"'
                     value={this.state.employeeNumber}
                     onChange={event => this.change(event)}
                   />
                   <br />
+                 
 
 
 
@@ -263,7 +274,7 @@ export default class UpdateEmployee extends React.Component {
                       <br />
                       <input
                         name='language_1'
-                        placeholder='language_1'
+                        // placeholder={this.state.language_1}
                         value={this.state.language_1}
                         onChange={event => this.change(event)}
                       />
