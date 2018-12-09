@@ -85,8 +85,9 @@ export default class CreateTeam extends React.Component {
         console.log("this is the return for create new team")
         console.log(res.data)
         // redirect to user page
-        this.resetState();
         this.redirectUserPage();
+        this.resetState();
+
       })
       .catch(err => console.log(err));
 
@@ -114,10 +115,22 @@ export default class CreateTeam extends React.Component {
     })
   };
 
-
   redirectUserPage = () => {
-    this.props.history.push("/user");
+    this.props.history.push({
+      pathname:"/modify",
+      state:{
+          teamName: this.state.teamName
+       }
+     });
   };
+
+
+  
+
+
+  // redirectUserPage = () => {
+  //   this.props.history.push("/user");
+  // };
 
   render() {
     return (

@@ -23,8 +23,14 @@ export default class ModifyTeam extends React.Component {
   componentDidMount = () => {
     // this.teamPool();
     // this.currentTeam();
+    this.setTeamName();
   };
-
+setTeamName = () => {
+  console.log(this.props.location.state.teamName)
+  this.setState({
+    teamName: this.props.location.state.teamName
+  })
+}
 
 
   teamPool = (name) => {
@@ -206,14 +212,15 @@ export default class ModifyTeam extends React.Component {
         </div>
 
         <hr />
+        <div>{this.state.teamName}</div>
 
-        <div>Enter Team Name</div>
+        {/* <div>Enter Team Name</div>
         <input
           name='teamName'
           placeholder='"Enter team name"'
           value={this.state.teamName}
           onChange={event => this.change(event)}
-        />
+        /> */}
         <button onClick={() => this.startBuildingTeam(this.state.teamName)}>Start Building Team</button>
 
         <br />
