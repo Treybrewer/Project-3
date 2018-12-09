@@ -1,5 +1,181 @@
 
 
+
+                                            NEW PROJECT IDEA
+
+new Database: project3 
+
+collections: employees , teamrequest, teams , pools
+
+
+App will allow a manager to retreive a list of canidates that match specified criteria in order to create a development team.
+
+
+                        WORK FLOW
+-----------------------------------------------
+Manager will enter the following info:
+    - team name
+    - start date
+    - end date
+    - languages
+    - skill level for each language
+
+
+App will return:
+    - employee name
+    - language
+    - skill for each language
+
+
+Manager will be able to save an employee to the team.
+
+---------------------------------------------------
+
+                            LOGIC
+--------------------------------------------------
+- the requested info is compared against employees in the database
+- if the employee is already on a team, a variable will be set to true and not return them
+- if the employee is added to a new team by the manager, they will be added to the teams collection
+
+- a search can be done for the following:
+    - search for specific employee to find their current status
+    - search for team requests
+    - search for current teams 
+
+---------------------------------------------------
+
+                            COLLECTIONS 
+
+COLLECTION: employees
+    - collection of employees that contain the following data
+        - name: (first, last),
+        - employeeNumber: 1234,
+        - assets: [ {
+                    language: "node.js",
+                    level: 2,
+                    }],
+        - available: [ {
+                        condition: false,
+                        assignment: "project name if assigned to one",
+                        beginDate: "date project began",
+                        endDate: "date project will end",
+                        } ]
+--------------------------------------------------
+COLLECTION: teamrequest
+    - collection for a team REQUEST contains the following data
+        - teamName: "alpha",
+        - manger: "john",
+        - startDate: "date",
+        - endDate: "date",
+        - languageRequired: [ {
+                                languageReq: "node",
+                                skillReq: 2,
+                                } ]
+----------------------------------------------------
+COLLECTION: teams
+    - collection for saved teams 
+        - teamName: "alpha",
+        - manager: "john",
+        - startDate: "date",
+        - endDate: "date",
+        - members: [ employeeNumber, employeeNumber ],
+-----------------------------------------------------
+COLLECTION: pool
+    - collection for potential employees to be selected for a team.
+        - teamName: "alpha",
+        - firstName: "brian",
+        - lastName: "smith",
+        - employeeNumber: 123,
+        - employeeAvailable: true,
+        - assets: [],
+---------------------------------------------------
+
+
+
+
+                PAGES 
+
+- Home
+    - user log in
+
+- User 
+    - links to the following:
+        - Create Team page
+        - View Teams page
+        - Admin page 
+
+// the create pages will look like one page        
+
+- Create Team Page 
+    - Inputs for createing team
+
+-  Create - Modify Team Page
+    - Add or Remove from a list of potential employees 
+
+- Create - View Team Page 
+    - input to select team name
+    - list to show team members
+
+
+
+- Admin page
+    - links to the following:
+        - Manage Employees Page
+        - Manage user/passwords Page
+
+- Manage Employees Page
+    - update/modify: name, languages, skill level, project assignement, etc
+
+- Manage user/password page
+    - update/modify username/ password, etc
+
+
+
+-------------------------------------
+
+routes:
+
+- to create the team requirements: /api/teamrequirements
+
+- to create a pool of potential employees for a team: /api/pool 
+
+- to view the results: /api/teams
+
+- to input/modify employees: /api/employees
+
+
+
+
+
+
+____________________________________________________________________________________-
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================================================================
+
 database info-----------
 
 mongodb = project3

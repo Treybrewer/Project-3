@@ -4,62 +4,59 @@ export default {
 
 // uses route: /api/companyrequirements/
  
-addNewCompany: function(data) {
+addNewTeam: function(data) {
   console.log(data);
-  return axios.post("/api/companyrequirements/", data);
+  return axios.post("/api/teamrequirements", data);
 },
 
-allCompanies: function() {
-  return axios.get("/api/companyrequirements");
-},
-
-updateCompany: function(company, data) {
-  return axios.put("/api/companyrequirements/" + company , data);
-},
-
-deleteCompany: function(company) {
-  console.log("!!!! company to delete: " + company);
-  return axios.delete("/api/companyrequirements/" + company );
-},
-
-returnSpecificCompany: function(company) {
-  return axios.get("/api/companyrequirements/" + company);
-},
-
-// uses routes: /api/companyresults/
-
-seeAllResults: function() {
-  return axios.get("/api/companyresults");
-},
-
-saveSpecificCompanyResult: function(data) {
-  return axios.post("/api/companyresults", data);
-},
-
-seeSpecificCompanyResult: function(company) {
-  return axios.get("/api/companyresults/" + company);
-},
-
-updateCompanyResult: function(company, data) {
-  return axios.put("/api/companyresults/" + company, data);
-},
-
-deleteCompanyResult: function(company) {
-  return axios.delete("/api/companyresults/" + company);
-},
-
-// uses routes: /api/operations/
-
-
-runSpecificMatch: function(company) {
-  return axios.get("/api/operations/" + company);
+getSpecificTeamRequirements: function(teamName) {
+  console.log("getting specif team requirement for: " +teamName);
+  return axios.get("/api/teamrequirements/"+teamName);
 },
 
 
-// may note use this function client side.
-runAllMatches: function() {
-  return axios.post("/api/operations");
+
+
+addNewEmployee: function(data) {
+  console.log(data)
+  return axios.post("/api/employees", data);
 },
+
+getAllEmployees: function() {
+  return axios.get("/api/employees");
+},
+
+// working on this one now
+updateEmployee: function (employeeNumber, data) {
+  return axios.put("/api/employees/" + employeeNumber, data);
+},
+
+deleteEmployee: function(employeeNumber) {
+  return axios.delete("/api/employees/" + employeeNumber);
+},
+
+
+
+
+getSpecificTeamPool: function(teamName) {
+return axios.get("/api/pool/"+teamName);
+},
+
+getAllTeamPool: function() {
+  return axios.get("/api/pool");
+},
+
+updateTeamPool: function(employeeNumber, data) {
+  return axios.put("/api/pool/"+employeeNumber, data)
+},
+
+
+saveTeam: function(data) {
+  console.log("sending new team to server")
+  console.log(data);
+  return axios.post("/api/teams", data);
+}
+
 
 
 };
