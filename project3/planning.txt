@@ -104,15 +104,19 @@ COLLECTION: pool
         - View Teams page
         - Admin page 
 
+// the create pages will look like one page        
+
 - Create Team Page 
     - Inputs for createing team
 
-- Modify Team Page
+-  Create - Modify Team Page
     - Add or Remove from a list of potential employees 
 
-- View Team Page 
+- Create - View Team Page 
     - input to select team name
-    - list to show team membert
+    - list to show team members
+
+
 
 - Admin page
     - links to the following:

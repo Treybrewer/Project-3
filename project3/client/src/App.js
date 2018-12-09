@@ -22,14 +22,18 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/user" component={User} />
-        <Route exact path="/admin" component={Admin} />
+
         <Route exact path="/create" component={CreateTeam} />
         <Route exact path="/modify" component={ModifyTeam} />
+        <Route exact path="/viewteam" component={ViewTeam} />
+
+        <Route exact path="/admin" component={Admin} />
         <Route exact path="/addemployee" component={AddEmployee} />
         <Route exact path="/updateemployee" component={UpdateEmployee} />
+        
         <Route exact path="/modifylogin" component={ModifyLogin} />
 
-        <Route exact path="/viewteam" component={ViewTeam} />
+
 
 
         {/* <Route component={NoMatch]]} /> */}

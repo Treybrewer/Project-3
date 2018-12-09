@@ -54,20 +54,22 @@ export default class User extends React.Component {
         <br />
         <br />
         <br />
-        <div>This page need links to
-          1-create team page
-          2- view teams page
-          3- admin page
-  </div>
 
-        <a href="/create">Create a New Team</a>
+        <div>This is the home page once the user has logged in.</div>
+        
+
+        <a href="/create">Enter New Team Requirements</a>
         <br />
-        <a href="/viewteam">View Teams</a>
+        <a href="/modify">Select Team Members</a>
+        <br />
+        <a href="/viewteam">View Team</a>
+        <br />
+        <br />
+        <br />
         <br />
         <a href="/admin">Admin Page</a>
         <br />
-        <br />
-        <a href="/user">Home</a>
+       
       </div>
     );
   }

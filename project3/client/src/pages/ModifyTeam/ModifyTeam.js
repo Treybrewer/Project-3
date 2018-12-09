@@ -188,8 +188,26 @@ export default class ModifyTeam extends React.Component {
         <br />
         <br />
         <br />
-        <h1 className="text-center">Team Creating Page</h1>
-        <h4>Enter Team Name</h4>
+        <h1 className="text-center">Create Team</h1>
+
+        <div className="row">
+          <div className="col-4 text-center">
+            <h3 className="text-center"></h3>
+          </div>
+
+          <div className="col-4 text-center">
+            <h3 className="text-center">Select Team Members</h3>
+          </div>
+
+          <div className="col-4 text-center">
+            <h3 className="text-center"></h3>
+          </div>
+
+        </div>
+
+        <hr />
+
+        <div>Enter Team Name</div>
         <input
           name='teamName'
           placeholder='"Enter team name"'
