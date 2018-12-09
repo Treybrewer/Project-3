@@ -1,0 +1,11 @@
+footer {
+    background: #789198;
+    padding: 12px;
+    display: flex;
+    
+}
+
+#footer-section{
+    flex: 1;
+    
+}

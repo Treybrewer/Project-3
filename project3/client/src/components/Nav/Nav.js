@@ -17,7 +17,7 @@ export default class Nav extends React.Component {
   }
   componentDidUnmount() {
     window.onscroll=function() {
-      undefined
+      undefined;
     }
   }
   render() {

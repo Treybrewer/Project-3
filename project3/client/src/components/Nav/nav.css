@@ -7,8 +7,7 @@
     padding: 8px;
     z-index: 20;
     width: 100%;
-    transition: ease-in-out .5s;
-    opacity: .9;   
+    transition: ease-in-out .5s; 
 }
 
 .flex-item{
