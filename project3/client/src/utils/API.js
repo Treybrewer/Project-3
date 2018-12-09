@@ -4,7 +4,7 @@ export default {
 
 // uses route: /api/companyrequirements/
  
-addNewTeam: function(data) {
+addNewTeamRequirements: function(data) {
   console.log(data);
   return axios.post("/api/teamrequirements", data);
 },
@@ -51,11 +51,22 @@ updateTeamPool: function(employeeNumber, data) {
 },
 
 
-saveTeam: function(data) {
-  console.log("sending new team to server")
+updateTeam: function(teamName, data) {
+  console.log("update team with employees")
+  console.log(teamName)
+  console.log("this should be the _id")
   console.log(data);
+  return axios.put("/api/teams/"+teamName, data);
+},
+
+
+getTeam: function() {
+  return axios.get("/api/teams");
+},
+
+createNewTeam: function(data) {
   return axios.post("/api/teams", data);
-}
+},
 
 
 

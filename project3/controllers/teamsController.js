@@ -25,7 +25,8 @@ module.exports = {
     console.log(teamName);
     console.log(data);
     return db.teamModel
-      .findOneAndUpdate({ teamName: teamName }, data, {new: true})
+      .findOneAndUpdate({ teamName: teamName },
+        { $push: { members: data } }, {new: true})
   },
 
   remove: function (teamName) {

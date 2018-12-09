@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./ModifyTeam.css";
-import Axios from 'axios';
+
 
 /* Import Components */
 
@@ -25,50 +25,63 @@ export default class ModifyTeam extends React.Component {
     // this.currentTeam();
     this.setTeamName();
   };
-setTeamName = () => {
-  console.log(this.props.location.state.teamName)
-  this.setState({
-    teamName: this.props.location.state.teamName
-  })
-}
+  
+  setTeamName = () => {
+    console.log(this.props.location.state.teamName)
+    if(this.props.location.state.teamName) {
+      this.setState({
+        teamName: this.props.location.state.teamName
+      })
+    }
+  };
 
+  change = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
-  teamPool = (name) => {
-    // let name = "alpha";
-    API.getSpecificTeamPool(name)
+  startBuildingTeam = (teamName) => {
+    console.log(`start building ${teamName}.`)
+    this.setState({
+      startBuilding: true
+    })
+    this.teamPool(teamName);
+    this.teamRequirements(teamName);
+  };
+
+  teamPool = (teamName) => {
+
+    API.getSpecificTeamPool(teamName)
       .then(res => {
         console.log("this is the return for getspecificteampool()")
         console.log(res.data)
         this.setState({
           teamPoolArray: res.data,
         })
-        this.currentTeam();
+        this.currentTeam(this.state.teamName);
       })
 
       .catch(err => console.log(err));
   };
 
+  teamRequirements = (teamName) => {
 
-  // teamPool = () => {
-  //   API.getAllTeamPool()
-  //     .then(res => {
-  //       console.log("this is the return for getteampool()")
-  //       console.log(res.data)
-  //       this.setState({
-  //         teamPoolArray: res.data,
-  //       })
-  //       this.currentTeam();
-  //     })
-
-  //     .catch(err => console.log(err));
-  // };
+    API.getSpecificTeamRequirements(teamName)
+      .then(res => {
+        console.log("!!!!!this is the return for getspecificteam requirements()")
+        console.log(res.data)
+        this.setState({
+          manager: res.data.manager,
+          teamStartDate: res.data.teamStartDate,
+          teamEndDate: res.data.teamEndDate,
+        })
+      })
+      .catch(err => console.log(err));
 
 
-  // change = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
-  // }
+  };
+
 
   addToTeam = (employeeNumber) => {
     console.log("this is the add to team #: " + employeeNumber);
@@ -81,7 +94,7 @@ setTeamName = () => {
       .then(res => {
         console.log("this is the return for updateteampool()")
         console.log(res.data)
-        this.teamPool();
+        this.teamPool(this.state.teamName);
         // this.currentTeam();
       })
       .catch(err => console.log(err));
@@ -97,93 +110,69 @@ setTeamName = () => {
       .then(res => {
         console.log("this is the return for updateteampool()")
         console.log(res.data)
-        this.teamPool();
+        this.teamPool(this.state.teamName);
         // this.currentTeam();
       })
       .catch(err => console.log(err));
 
   };
 
-  currentTeam = () => {
+  currentTeam = (teamName) => {
+    // this check to see if addedToTeam is true/false, if true add to the currentTeam[]
+    let tempArray = [];
 
     this.setState({
       currentTeamArray: []
     })
 
-    let tempArray = [];
-
-    for (var i = 0; i < this.state.teamPoolArray.length; i++) {
-      if (this.state.teamPoolArray[i].addedToTeam === true) {
-        console.log(`this one matches ${this.state.teamPoolArray[i].firstName}`)
-        tempArray.push(this.state.teamPoolArray[i]);
-        this.setState({
-          currentTeamArray: tempArray
-        })
-      }
-    }
-
-
-  };
-
-  // need to get all this data saved to the team collection
-  // it didnt send first/last name????
-
-  // need to figure out why the page doesnt respond when clicking add to team buttons.
-
-  submitTeam = () => {
-    console.log("submitting team")
-    for (var i = 0; i < this.state.currentTeamArray.length; i++) {
-      API.saveTeam({
-        teamName: this.state.currentTeamArray[i].teamName,
-        manager: this.state.currentTeamArray[i].manager,
-        startDate: this.state.teamStartDate,
-        endDate: this.state.teamEndDate,
-        firstName: this.state.currentTeamArray[i].firstName,
-        lastName: this.state.currentTeamArray[i].lastName,
-        employeeNumber: this.state.currentTeamArray[i].employeeNumber,
-        assets: this.state.currentTeamArray[i].assets,
-
-        manager: this.state.manager,
-      })
-        .then(res => {
-          console.log("saved to team collection")
-        })
-        .catch(err => console.log(err));
-    }
-  };
-
-  change = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  startBuildingTeam = (teamName) => {
-    console.log(`start building ${teamName}.`)
-    this.setState({
-      startBuilding: true
-    })
-
-    this.teamPool(teamName);
-
-    API.getSpecificTeamRequirements(teamName)
+    API.getSpecificTeamPool(teamName)
       .then(res => {
-        console.log("this is the return for getspecificteam requirements()")
+        console.log("??????? this is the return for getspecificteampool()")
         console.log(res.data)
-        this.setState({
-          manager: res.data.manager,
-          teamStartDate: res.data.teamStartDate,
-          teamEndDate: res.data.teamEndDate,
-        })
+        // here sort and display only employees where addedtoteam is true
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].addedToTeam === true) {
+            console.log(`this one matches ${res.data[i].firstName}`)
+            tempArray.push(res.data[i]);
+            this.setState({
+              currentTeamArray: tempArray
+            })
+          }
+        }
       })
+
       .catch(err => console.log(err));
 
   };
 
+ 
+
+  submitTeam = () => {
+    console.log("submitting team")
+    new Promise((resolve, reject) => {
+      for (var i = 0; i < this.state.currentTeamArray.length; i++) {
+
+        API.updateTeam(this.state.teamName, { _id: this.state.currentTeamArray[i]._id } )
+          .then(res => {
+            console.log("added to team collection array")
+          })
+          .catch(err => console.log(err));
+      }
+      resolve(this.redirectViewTeamPage());
+    })
+
+  };
+
+  
 
 
-  redirectUserPage = () => {
-    this.props.history.push("/user");
+  redirectViewTeamPage = () => {
+    this.props.history.push({
+      pathname: "/viewteam",
+      state: {
+        teamName: this.state.teamName
+      }
+    });
   };
 
   render() {
@@ -212,7 +201,7 @@ setTeamName = () => {
         </div>
 
         <hr />
-        <div>{this.state.teamName}</div>
+        <div>This is the team name to begin selecting users: {this.state.teamName}</div>
 
         {/* <div>Enter Team Name</div>
         <input
@@ -300,3 +289,36 @@ setTeamName = () => {
     );
   }
 }
+
+
+
+
+// submitTeam = () => {
+//   console.log("submitting team")
+//   new Promise((resolve, reject) => {
+//     for (var i = 0; i < this.state.currentTeamArray.length; i++) {
+//       API.updateTeam(
+//         { teamName : this.state.teamName },
+        
+//         {
+//           teamName: this.state.teamName,
+//           manager: this.state.manager,
+//           startDate: this.state.teamStartDate,
+//           endDate: this.state.teamEndDate,
+//           firstName: this.state.currentTeamArray[i].firstName,
+//           lastName: this.state.currentTeamArray[i].lastName,
+//           employeeNumber: this.state.currentTeamArray[i].employeeNumber,
+//           assets: this.state.currentTeamArray[i].assets,
+//       })
+//         .then(res => {
+//           console.log("saved to team collection")
+//         })
+//         .catch(err => console.log(err));
+//     }
+//     resolve(this.redirectViewTeamPage());
+//   })
+
+// };
+
+
+

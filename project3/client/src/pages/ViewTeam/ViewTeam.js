@@ -6,46 +6,48 @@ import "./ViewTeam.css";
 
 export default class ViewTeam extends React.Component {
   state = {
-    company: '',
-    searchWords: '',
-    input: ''
+    teamName: "",
+    teamArray: [],
+  };
+
+  componentDidMount = () => {
+    this.setTeamName();
+    this.getTeam();
+  };
+
+  setTeamName = () => {
+    console.log(this.props.location.state.teamName)
+    this.setState({
+      teamName: this.props.location.state.teamName
+    })
   }
+
+
+  getTeam = () => {
+    API.getTeam()
+      .then(res => {
+        console.log("this is the return for getteam()")
+        console.log(res.data)
+        this.setState({
+          teamArray: res.data,
+        })
+      })
+      .catch(err => console.log(err));
+  };
+
+
 
   change = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
   onSubmit = event => {
     event.preventDefault();
 
-    // this will remove spaces and ,'s from the searchwords input
-    let searchWordsArray = [];
-    searchWordsArray = this.state.searchWords.split(/[ ,]+/);
-    console.log("this is the keywords array");
-    console.log(searchWordsArray)
-    //----------------------------------------------
+  };
 
-    API.addNewCompany({
-      company: this.state.company,
-      searchWords: searchWordsArray
-    })
-      .then(res => {
-        console.log("this is the return for addNewCompany()")
-        console.log(res.data)
-
-      })
-      .catch(err => console.log(err));
-    console.log("hello I am showing up");
-
-
-    this.setState({
-      company: '',
-      searchWords: '',
-      input: ''
-    })
-  }
 
   render() {
     return (
@@ -76,8 +78,41 @@ export default class ViewTeam extends React.Component {
         <br />
         <br />
         <br />
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col-8">
+            <h3 className="text-center">Team Members</h3>
+            <h4 className="text-center">Team: {this.state.teamName}</h4>
 
-        <div>List of team members</div>
+            {this.state.teamArray ? (
+              <ul>
+                {this.state.teamArray.map(person => (
+                  <li key={person.employeeNumber}>
+                    <h4>{person.firstName} {person.lastName}</h4>
+
+                    {/* {!person.addedToTeam ? (
+                      <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
+                    ) : (
+                        <button onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
+                      )} */}
+
+
+
+                    <br />
+                  </li>
+
+
+                ))}
+              </ul>
+            ) : (
+                <div>no Team to display</div>
+              )}
+
+
+
+          </div>
+        </div>
+
 
 
 

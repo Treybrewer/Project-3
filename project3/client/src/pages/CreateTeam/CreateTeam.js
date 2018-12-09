@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./CreateTeam.css";
 
-/* Import Components */
 
 export default class CreateTeam extends React.Component {
   state = {
@@ -71,9 +70,20 @@ export default class CreateTeam extends React.Component {
         skill_5: this.state.skill_5
       })
     }
+// creating new team document to be populated later
+    API.createNewTeam({
+      teamName: this.state.teamName,
+      manager: this.state.manager,
+      startDate: this.state.teamStartDate,
+      endDate: this.state.teamEndDate,
+    })
+    .then(res => {
+      console.log("this is the return for create new team")
+    })
+    .catch(err => console.log(err));
 
-
-    API.addNewTeam({
+// create new team request document
+    API.addNewTeamRequirements({
       teamName: this.state.teamName,
       teamStartDate: this.state.teamStartDate,
       teamEndDate: this.state.teamEndDate,
@@ -82,7 +92,7 @@ export default class CreateTeam extends React.Component {
 
     })
       .then(res => {
-        console.log("this is the return for create new team")
+        console.log("this is the return for create new team requirement")
         console.log(res.data)
         // redirect to user page
         this.redirectUserPage();
