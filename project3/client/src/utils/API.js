@@ -9,6 +9,11 @@ addNewTeam: function(data) {
   return axios.post("/api/teamrequirements", data);
 },
 
+getSpecificTeamRequirements: function(teamName) {
+  console.log("getting specif team requirement for: " +teamName);
+  return axios.get("/api/teamrequirements/"+teamName);
+},
+
 
 
 
@@ -24,9 +29,33 @@ getAllEmployees: function() {
 // working on this one now
 updateEmployee: function (employeeNumber, data) {
   return axios.put("/api/employees/" + employeeNumber, data);
+},
+
+deleteEmployee: function(employeeNumber) {
+  return axios.delete("/api/employees/" + employeeNumber);
+},
+
+
+
+
+getSpecificTeamPool: function(teamName) {
+return axios.get("/api/pool/"+teamName);
+},
+
+getAllTeamPool: function() {
+  return axios.get("/api/pool");
+},
+
+updateTeamPool: function(employeeNumber, data) {
+  return axios.put("/api/pool/"+employeeNumber, data)
+},
+
+
+saveTeam: function(data) {
+  console.log("sending new team to server")
+  console.log(data);
+  return axios.post("/api/teams", data);
 }
-
-
 
 
 

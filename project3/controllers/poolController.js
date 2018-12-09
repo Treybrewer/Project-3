@@ -4,38 +4,34 @@ const db = require("../models");
 module.exports = {
 
   findAll: function () {
-    return db.teamRequestModel
+    return db.poolModel
       .find({})
       // .sort({ date: -1 })
   },
-  findByTeamName: function (teamName) {
-    return db.teamRequestModel
-      .findOne({ teamName: teamName })
+  findByTeamName: function (teamname) {
+    return db.poolModel
+      .find({ teamName: teamname })
   },
 
-  // findByCompany: function (company) {
-  //   return db.CompanyRequirementsModel
-  //     .findById(company)
-  // },
+ 
   create: function (data) {
-    console.log("teamRequirementsController.js.create");
+    console.log("poolController.js.create");
     console.log(data);
-    return db.teamRequestModel
+    return db.poolModel
       .create(data)
   },
-  update: function (team, data) {
-    console.log("teamrequirementscontroller.js ")
-    console.log(team);
+  update: function (employeeNumber, data) {
+    console.log("poolcontroller.js ")
+    console.log(employeeNumber);
     console.log(data);
-    return db.teamRequestModel
-      .findOneAndUpdate({ team: team }, data, {new: true})
+    return db.poolModel
+      .findOneAndUpdate({ employeeNumber: employeeNumber }, data, {new: true})
   },
-  remove: function (team) {
-    console.log("removing this one: " + team)
-    return db.teamRequestModel
-    .findOneAndRemove({team: team})
-      // .findById({ company: company })
-      // .then(dbModel => dbModel.remove())
+  remove: function (employeeNumber) {
+    console.log("removing this one: " + employeeNumber)
+    return db.poolModel
+    .findOneAndRemove({employeeNumber: employeeNumber})
+      
   }
 
 };

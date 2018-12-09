@@ -5,7 +5,7 @@
 
 new Database: project3 
 
-collections: employees , teamrequest, teams 
+collections: employees , teamrequest, teams , pools
 
 
 App will allow a manager to retreive a list of canidates that match specified criteria in order to create a development team.
@@ -60,9 +60,7 @@ COLLECTION: employees
                         beginDate: "date project began",
                         endDate: "date project will end",
                         } ]
-
-
-
+--------------------------------------------------
 COLLECTION: teamrequest
     - collection for a team REQUEST contains the following data
         - teamName: "alpha",
@@ -73,17 +71,24 @@ COLLECTION: teamrequest
                                 languageReq: "node",
                                 skillReq: 2,
                                 } ]
-
-
+----------------------------------------------------
 COLLECTION: teams
-    - collection for team "name" potential employees
+    - collection for saved teams 
         - teamName: "alpha",
         - manager: "john",
         - startDate: "date",
         - endDate: "date",
         - members: [ employeeNumber, employeeNumber ],
-
-----------------------------------
+-----------------------------------------------------
+COLLECTION: pool
+    - collection for potential employees to be selected for a team.
+        - teamName: "alpha",
+        - firstName: "brian",
+        - lastName: "smith",
+        - employeeNumber: 123,
+        - employeeAvailable: true,
+        - assets: [],
+---------------------------------------------------
 
 
 
@@ -99,12 +104,19 @@ COLLECTION: teams
         - View Teams page
         - Admin page 
 
+// the create pages will look like one page        
+
 - Create Team Page 
     - Inputs for createing team
 
-- View Team Page 
+-  Create - Modify Team Page
+    - Add or Remove from a list of potential employees 
+
+- Create - View Team Page 
     - input to select team name
-    - list to show team membert
+    - list to show team members
+
+
 
 - Admin page
     - links to the following:
@@ -124,6 +136,8 @@ COLLECTION: teams
 routes:
 
 - to create the team requirements: /api/teamrequirements
+
+- to create a pool of potential employees for a team: /api/pool 
 
 - to view the results: /api/teams
 

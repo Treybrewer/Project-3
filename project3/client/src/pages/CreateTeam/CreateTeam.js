@@ -89,7 +89,7 @@ export default class CreateTeam extends React.Component {
         this.redirectUserPage();
       })
       .catch(err => console.log(err));
- 
+
   };
 
   resetState = () => {
@@ -128,8 +128,29 @@ export default class CreateTeam extends React.Component {
         <br />
         <br />
 
+        <h1 className="text-center">Create Team</h1>
+
+        <div className="row">
+          <div className="col-4 text-center">
+            <h3 className="text-center">Enter Team Requirements</h3>
+          </div>
+
+          <div className="col-4 text-center">
+            <h3 className="text-center"></h3>
+          </div>
+
+          <div className="col-4 text-center">
+            <h3 className="text-center"></h3>
+          </div>
+
+        </div>
+
+        <hr />
+
+
+
         <form>
-          <h1 className="text-center">Create Project Team</h1>
+
           <br />
           <h4>What is the teams name?</h4>
           <input
