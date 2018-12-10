@@ -27,7 +27,7 @@ router.route("/:teamname")
             requirements = dbresults.assets;
             // console.log(requirements);
 
-            matchEmployees.performMatch(employeeResults.teamName, requirements, employeeResults)
+            matchEmployees.performMatch(teamName, requirements, employeeResults)
               .then(result => {
                 // console.log(result)
               })

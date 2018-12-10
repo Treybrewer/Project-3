@@ -5,6 +5,8 @@ const pool = require("../controllers/poolController");
 
 module.exports = {
     performMatch: function (teamName, requirements, employeeResults) {
+
+       
         // console.log("this is the requirements")
         // console.log(requirements);
 
@@ -30,11 +32,12 @@ module.exports = {
                 for (var k = 0; k < employeeResults.length; k++) {
                     for (var y = 0; y < employeeResults[k].assets.length; y++) {
 
-                        if (requirements[i].language_1 === employeeResults[k].assets[y].language) {
+                        if (requirements[i].language === employeeResults[k].assets[y].language) {
                             console.log("this languages match!!!");
-                            console.log(`requirement: ${requirements[i].language_1} employee language: ${employeeResults[k]}`);
+                            console.log(`requirement: ${requirements[i].language} employee language: ${employeeResults[k]}`);
 
                             // push the match to the pools collection
+                            
 
                             pool.create({
                                 teamName: teamName,

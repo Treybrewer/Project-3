@@ -169,7 +169,7 @@ db.employees.insert({
     lastName: "Brush",
     employeeNumber: 363,
     assets: [{
-        language: "",
+        language: "Node.js",
         level: 5,
     }],
     available:  true,

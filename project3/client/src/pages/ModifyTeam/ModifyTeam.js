@@ -25,10 +25,10 @@ export default class ModifyTeam extends React.Component {
     // this.currentTeam();
     this.setTeamName();
   };
-  
+
   setTeamName = () => {
-    console.log(this.props.location.state.teamName)
-    if(this.props.location.state.teamName) {
+    // console.log(this.props.location.state.teamName)
+    if (this.props.location.state.teamName) {
       this.setState({
         teamName: this.props.location.state.teamName
       })
@@ -42,7 +42,7 @@ export default class ModifyTeam extends React.Component {
   };
 
   startBuildingTeam = (teamName) => {
-    console.log(`start building ${teamName}.`)
+    // console.log(`start building ${teamName}.`)
     this.setState({
       startBuilding: true
     })
@@ -54,8 +54,8 @@ export default class ModifyTeam extends React.Component {
 
     API.getSpecificTeamPool(teamName)
       .then(res => {
-        console.log("this is the return for getspecificteampool()")
-        console.log(res.data)
+        // console.log("this is the return for getspecificteampool()")
+        // console.log(res.data)
         this.setState({
           teamPoolArray: res.data,
         })
@@ -84,7 +84,7 @@ export default class ModifyTeam extends React.Component {
 
 
   addToTeam = (employeeNumber) => {
-    console.log("this is the add to team #: " + employeeNumber);
+    // console.log("this is the add to team #: " + employeeNumber);
 
     let data = {
       addedToTeam: true
@@ -92,8 +92,8 @@ export default class ModifyTeam extends React.Component {
 
     API.updateTeamPool(employeeNumber, data)
       .then(res => {
-        console.log("this is the return for updateteampool()")
-        console.log(res.data)
+        // console.log("this is the return for updateteampool()")
+        // console.log(res.data)
         this.teamPool(this.state.teamName);
         // this.currentTeam();
       })
@@ -108,8 +108,8 @@ export default class ModifyTeam extends React.Component {
 
     API.updateTeamPool(employeeNumber, data)
       .then(res => {
-        console.log("this is the return for updateteampool()")
-        console.log(res.data)
+        // console.log("this is the return for updateteampool()")
+        // console.log(res.data)
         this.teamPool(this.state.teamName);
         // this.currentTeam();
       })
@@ -145,25 +145,41 @@ export default class ModifyTeam extends React.Component {
 
   };
 
- 
+
 
   submitTeam = () => {
     console.log("submitting team")
     new Promise((resolve, reject) => {
       for (var i = 0; i < this.state.currentTeamArray.length; i++) {
 
-        API.updateTeam(this.state.teamName, { _id: this.state.currentTeamArray[i]._id } )
+        API.updateTeam(this.state.teamName, { _id: this.state.currentTeamArray[i]._id })
           .then(res => {
-            console.log("added to team collection array")
+            // console.log("added to team collection array")
           })
           .catch(err => console.log(err));
+        // changing available status to false in employee collection
+        this.updateAvailability(this.state.currentTeamArray[i].employeeNumber)
       }
       resolve(this.redirectViewTeamPage());
     })
 
   };
 
-  
+  updateAvailability = (employeeNumber) => {
+    console.log(`this is the employee number for changing availability: ${employeeNumber}`);
+
+    API.updateEmployee(employeeNumber, {
+      available: false
+    })
+      .then(res => {
+        console.log("changed available to false")
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+
+  };
+
+
 
 
   redirectViewTeamPage = () => {
@@ -299,7 +315,7 @@ export default class ModifyTeam extends React.Component {
 //     for (var i = 0; i < this.state.currentTeamArray.length; i++) {
 //       API.updateTeam(
 //         { teamName : this.state.teamName },
-        
+
 //         {
 //           teamName: this.state.teamName,
 //           manager: this.state.manager,

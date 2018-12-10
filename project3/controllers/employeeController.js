@@ -18,13 +18,13 @@ module.exports = {
   //     .findById(company)
   // },
   create: function (data) {
-    console.log("teamRequirementsController.js.create");
+    console.log("employeesController.js.create");
     console.log(data);
     return db.employeeModel
       .create(data)
   },
   update: function (employeeNumber, data) {
-    console.log("teamrequirementscontroller.js ")
+    console.log("employeescontroller.js ")
     console.log(employeeNumber);
     console.log(data);
     return db.employeeModel

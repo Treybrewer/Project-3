@@ -5,12 +5,12 @@ export default {
 // uses route: /api/companyrequirements/
  
 addNewTeamRequirements: function(data) {
-  console.log(data);
+  // console.log(data);
   return axios.post("/api/teamrequirements", data);
 },
 
 getSpecificTeamRequirements: function(teamName) {
-  console.log("getting specif team requirement for: " +teamName);
+  // console.log("getting specif team requirement for: " +teamName);
   return axios.get("/api/teamrequirements/"+teamName);
 },
 
@@ -18,7 +18,7 @@ getSpecificTeamRequirements: function(teamName) {
 
 
 addNewEmployee: function(data) {
-  console.log(data)
+  // console.log(data)
   return axios.post("/api/employees", data);
 },
 
@@ -53,10 +53,10 @@ updateTeamPool: function(employeeNumber, data) {
 
 
 updateTeam: function(teamName, data) {
-  console.log("update team with employees")
-  console.log(teamName)
-  console.log("this should be the _id")
-  console.log(data);
+  // console.log("update team with employees")
+  // console.log(teamName)
+  // console.log("this should be the _id")
+  // console.log(data);
   return axios.put("/api/teams/"+teamName, data);
 },
 
@@ -75,7 +75,7 @@ createNewTeam: function(data) {
 
 
 logicForPool: function(teamName) {
-  console.log("logicForPool: " + teamName)
+  // console.log("logicForPool: " + teamName)
 return axios.get("/api/logic/"+teamName);
 },
 

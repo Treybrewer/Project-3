@@ -6,7 +6,7 @@ const teams = require("../../controllers/teamsController");
 
 router.route("/")
   .get((req, res) => {
-    console.log("a request for all companies.")
+    // console.log("a request for all companies.")
     teams.findAll()
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
@@ -14,8 +14,8 @@ router.route("/")
 
   router.route("/")
   .post((req, res) => {
-    console.log("post request to create teams")
-    console.log(req.body)
+    // console.log("post request to create teams")
+    // console.log(req.body)
 
     teams.create(req.body)
       .then(dbresults => res.json(dbresults))
@@ -28,8 +28,8 @@ router.route("/")
     teams.findByTeamName(req.params.teamname)
     .populate("Employee")
       .then(dbresults => {
-        console.log("this is the team array")
-        console.log(dbresults);
+        // console.log("this is the team array")
+        // console.log(dbresults);
         res.json(dbresults)
       })
         
@@ -39,9 +39,9 @@ router.route("/")
 
   router.route("/:teamname")
   .put((req, res) => {
-    console.log("this is updating teams")
-    console.log(req.params.teamname)
-    console.log(req.body)
+    // console.log("this is updating teams")
+    // console.log(req.params.teamname)
+    // console.log(req.body)
     teams.update(req.params.teamname, req.body)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
@@ -49,8 +49,8 @@ router.route("/")
 
   router.route("/:teamname")
   .delete((req, res) => {
-    console.log("this is req to delete teamname");
-    console.log(req.params.teamname)
+    // console.log("this is req to delete teamname");
+    // console.log(req.params.teamname)
     teams.remove(req.params.teamname)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))

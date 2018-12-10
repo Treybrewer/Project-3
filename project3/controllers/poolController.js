@@ -15,20 +15,20 @@ module.exports = {
 
  
   create: function (data) {
-    console.log("poolController.js.create");
-    console.log(data);
+    // console.log("poolController.js.create");
+    // console.log(data);
     return db.poolModel
       .create(data)
   },
   update: function (employeeNumber, data) {
-    console.log("poolcontroller.js ")
-    console.log(employeeNumber);
-    console.log(data);
+    // console.log("poolcontroller.js ")
+    // console.log(employeeNumber);
+    // console.log(data);
     return db.poolModel
       .findOneAndUpdate({ employeeNumber: employeeNumber }, data, {new: true})
   },
   remove: function (employeeNumber) {
-    console.log("removing this one: " + employeeNumber)
+    // console.log("removing this one: " + employeeNumber)
     return db.poolModel
     .findOneAndRemove({employeeNumber: employeeNumber})
       
