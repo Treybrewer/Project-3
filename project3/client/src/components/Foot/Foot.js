@@ -9,12 +9,6 @@ export const Foot = (props) => (
           <section id="footer-section">
            <MenuIcon />
           </section>
-          <section id="footer-section">
-            Content 2
-          </section>
-          <section id="footer-section">
-            Content 3
-          </section>
       </footer>
     );
  
