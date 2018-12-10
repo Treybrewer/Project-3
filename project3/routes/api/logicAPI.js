@@ -1,41 +1,61 @@
 const router = require("express").Router();
 const teamRequirements = require("../../controllers/teamRequirementsController");
+const employees = require("../../controllers/employeeController");
 const matchEmployees = require("../../logicController/matchEmployees");
 
- // Matches with "/api/logic"
- router.route("/:teamname")
+// Matches with "/api/logic"
+router.route("/:teamname")
   .get((req, res) => {
     let teamName = req.params.teamname;
-    console.log("!!!! Team Name: " + teamName);
+    // console.log("!!!! Team Name: " + teamName);
     // get requirements from database
     teamRequirements.findByTeamName(req.params.teamname)
       .then(dbresults => {
-        console.log("this is the team requirements")
-        console.log(dbresults)
+        // console.log("this is the team requirements")
+        // console.log(dbresults)
 
-        let requirements = [];
-        requirements = dbresults.assets;
-        console.log(requirements);
+        // get employees from database
+        employees.findByAvailable()
+          .then(employeeResults => {
+            // console.log("this is the available employees");
+            // console.log(employeeResults);
 
-        matchEmployees.performMatch(requirements);
+
+            // send requirements and employees to the logic file
+
+            let requirements = [];
+            requirements = dbresults.assets;
+            // console.log(requirements);
+
+            matchEmployees.performMatch(employeeResults.teamName, requirements, employeeResults)
+              .then(result => {
+                // console.log(result)
+              })
+              .catch(err => res.status(422).json(err))
+
+          })
+          .catch(err => res.status(422).json(err))
+
+
+
       })
 
 
 
 
-// function to create pools collection
-// db.pool.replaceOne(
-//   { employeeNumber: employeeNmuber },
-//   { employeeNumber: employeeNumber,
+    // function to create pools collection
+    // db.pool.replaceOne(
+    //   { employeeNumber: employeeNmuber },
+    //   { employeeNumber: employeeNumber,
 
-//   },
-//   { upsert: true }
-// )
+    //   },
+    //   { upsert: true }
+    // )
 
 
-       
-//       })
-//       .catch(err => res.status(422).json(err))
+
+    //       })
+    //       .catch(err => res.status(422).json(err))
 
 
     res.send("finished")
@@ -99,4 +119,4 @@ const matchEmployees = require("../../logicController/matchEmployees");
 //   })
 
 
-  module.exports = router;
+module.exports = router;

@@ -36,6 +36,11 @@ module.exports = {
     .findOneAndRemove({employeeNumber: employeeNumber})
       // .findById({ company: company })
       // .then(dbModel => dbModel.remove())
+  },
+
+  findByAvailable: function () {
+    return db.employeeModel
+      .find({available: true})
   }
 
 };

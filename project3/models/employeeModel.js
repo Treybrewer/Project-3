@@ -8,7 +8,7 @@ const employeeSchema = new Schema({
   firstName: { type: String },
   lastName: { type: String },
   employeeNumber: { type: String },
-  employeeAvailable: { type: Boolean },
+  available: { type: Boolean },
 
   assets: [],
   
