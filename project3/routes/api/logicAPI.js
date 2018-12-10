@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const teamRequirements = require("../../controllers/teamRequirementsController");
+const matchEmployees = require("../../logicController/matchEmployees");
 
  // Matches with "/api/logic"
  router.route("/:teamname")
@@ -12,25 +13,29 @@ const teamRequirements = require("../../controllers/teamRequirementsController")
         console.log("this is the team requirements")
         console.log(dbresults)
 
+        let requirements = [];
+        requirements = dbresults.assets;
+        console.log(requirements);
 
-
+        matchEmployees.performMatch(requirements);
+      })
 
 
 
 
 // function to create pools collection
-db.pool.replaceOne(
-  { employeeNumber: employeeNmuber },
-  { employeeNumber: employeeNumber,
-    
-  },
-  { upsert: true }
-)
+// db.pool.replaceOne(
+//   { employeeNumber: employeeNmuber },
+//   { employeeNumber: employeeNumber,
+
+//   },
+//   { upsert: true }
+// )
 
 
        
-      })
-      .catch(err => res.status(422).json(err))
+//       })
+//       .catch(err => res.status(422).json(err))
 
 
     res.send("finished")
