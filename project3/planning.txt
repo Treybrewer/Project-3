@@ -146,6 +146,18 @@ routes:
 
 
 
+-------------------------------------------
+
+Issues to address
+
+- function to change all inputs to lower-case for comparison.
+
+- change available to false in the employee collection when they are added to a team. (not sure why this isnt working...)
+
+- try and add just the employee._id to the pools document instead of firstName/lastName/etc.
+
+- remove the language_1 to just langage on the create team page. try and set up and [] to push the languages/skills into. cant use a dynamic loop with _1, _2.
+
 
 
 ____________________________________________________________________________________-

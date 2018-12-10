@@ -18,20 +18,20 @@ module.exports = {
   //     .findById(company)
   // },
   create: function (data) {
-    console.log("teamRequirementsController.js.create");
-    console.log(data);
+    // console.log("teamRequirementsController.js.create");
+    // console.log(data);
     return db.teamRequestModel
       .create(data)
   },
   update: function (team, data) {
-    console.log("teamrequirementscontroller.js ")
-    console.log(team);
-    console.log(data);
+    // console.log("teamrequirementscontroller.js ")
+    // console.log(team);
+    // console.log(data);
     return db.teamRequestModel
       .findOneAndUpdate({ team: team }, data, {new: true})
   },
   remove: function (team) {
-    console.log("removing this one: " + team)
+    // console.log("removing this one: " + team)
     return db.teamRequestModel
     .findOneAndRemove({team: team})
       // .findById({ company: company })

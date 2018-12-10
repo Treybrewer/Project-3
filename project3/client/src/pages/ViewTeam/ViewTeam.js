@@ -6,46 +6,68 @@ import "./ViewTeam.css";
 
 export default class ViewTeam extends React.Component {
   state = {
-    company: '',
-    searchWords: '',
-    input: ''
+    teamName: "",
+    teamArray: [],
+  };
+
+  componentDidMount = () => {
+    this.setTeamName();
+    this.getSpecificTeam(this.state.teamName)
+  };
+
+  setTeamName = () => {
+
+    this.setState({
+      teamArray: ""
+    })
+
+    console.log(this.props.location.state.teamName)
+    if (this.props.location.state.teamName) {
+      this.setState({
+        teamName: this.props.location.state.teamName
+      })
+      this.getSpecificTeam(this.state.teamName)
+    } else {
+      console.log("no team array is present")
+    }
+
   }
+
+
+  getSpecificTeam = (teamName) => {
+
+    this.setState({
+      teamArray: ""
+    })
+
+    API.getSpecificTeam(teamName)
+      .then(res => {
+        console.log("this is the return for getSpecificteam()")
+        console.log(res.data)
+        this.setState({
+          teamArray: res.data,
+        })
+      })
+      .catch(err => console.log(err));
+  };
+
+  viewTeam = () => {
+    this.getSpecificTeam(this.state.teamName);
+  };
+
+
 
   change = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
   onSubmit = event => {
     event.preventDefault();
 
-    // this will remove spaces and ,'s from the searchwords input
-    let searchWordsArray = [];
-    searchWordsArray = this.state.searchWords.split(/[ ,]+/);
-    console.log("this is the keywords array");
-    console.log(searchWordsArray)
-    //----------------------------------------------
+  };
 
-    API.addNewCompany({
-      company: this.state.company,
-      searchWords: searchWordsArray
-    })
-      .then(res => {
-        console.log("this is the return for addNewCompany()")
-        console.log(res.data)
-
-      })
-      .catch(err => console.log(err));
-    console.log("hello I am showing up");
-
-
-    this.setState({
-      company: '',
-      searchWords: '',
-      input: ''
-    })
-  }
 
   render() {
     return (
@@ -76,12 +98,43 @@ export default class ViewTeam extends React.Component {
         <br />
         <br />
         <br />
+        <div className="row">
+          <div className="col-2"></div>
+          <div className="col-8">
+            <h3 className="text-center">Team Members</h3>
+            <h4 className="text-center">Team: {this.state.teamName}</h4>
 
-        <div>List of team members</div>
+            {this.state.teamArray ? (
+              <ul>
+                {this.state.teamArray.map(details => (
+                  <li key={details.teamName}>
+                    <div>Team Manager: {details.manager}</div>
+                    <div>Start Date: {details.startDate}</div>
+                    <div>End Date: {details.endDate}</div>
 
+                    <br />
+                    <ul>
+                      {details.members.map(person => (
+                        <li key={person.employeeNumber}>
+                          <div>Name: {person.firstName} {person.lastName}</div>
+                        </li>
+                      ))}
+                    </ul>
+                    <hr />
+                  </li>
 
+                ))}
+              </ul>
+            ) : (
+                <div> No team to display </div>
+              )}
 
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+
+
