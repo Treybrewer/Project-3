@@ -11,7 +11,7 @@ module.exports = {
   findByTeamName: function (teamName) {
     return db.teamModel
       .findOne({ teamName: teamName })
-      .populate("Employee")
+      // .populate("Employee")
   },
 
   create: function (data) {

@@ -18,7 +18,7 @@ export default class ViewTeam extends React.Component {
   setTeamName = () => {
 
     this.setState({
-      teamArray: []
+      teamArray: ""
     })
 
     console.log(this.props.location.state.teamName)
@@ -35,6 +35,11 @@ export default class ViewTeam extends React.Component {
 
 
   getSpecificTeam = (teamName) => {
+
+    this.setState({
+      teamArray: ""
+    })
+
     API.getSpecificTeam(teamName)
       .then(res => {
         console.log("this is the return for getSpecificteam()")
@@ -99,36 +104,33 @@ export default class ViewTeam extends React.Component {
             <h3 className="text-center">Team Members</h3>
             <h4 className="text-center">Team: {this.state.teamName}</h4>
 
-            
+            {this.state.teamArray ? (
+              <ul>
+                {this.state.teamArray.map(details => (
+                  <li key={details.teamName}>
+                    <div>Team Manager: {details.manager}</div>
+                    <div>Start Date: {details.startDate}</div>
+                    <div>End Date: {details.endDate}</div>
 
-            <ul>
-              {this.state.teamArray.map(details => (
-                <li key={details.teamName}>
-                  <div>Team Manager: {details.manager}</div>
-                  <div>Start Date: {details.startDate}</div>
-                  <div>End Date: {details.endDate}</div>
+                    <br />
+                    <ul>
+                      {details.members.map(person => (
+                        <li key={person.employeeNumber}>
+                          <div>Name: {person.firstName} {person.lastName}</div>
+                        </li>
+                      ))}
+                    </ul>
+                    <hr />
+                  </li>
 
-                  <br />
-                  <ul>
-                    {details.members.map(person => (
-                      <li key={person.employeeNumber}>
-                        <div>Name: {person.firstName} {person.lastName}</div>
-                      </li>
-                    ))}
-                  </ul>
-                  <hr/>
-                </li>
-             
                 ))}
-            </ul>
+              </ul>
+            ) : (
+                <div> No team to display </div>
+              )}
 
-            
           </div>
         </div>
-
-
-
-
       </div>
     );
   }

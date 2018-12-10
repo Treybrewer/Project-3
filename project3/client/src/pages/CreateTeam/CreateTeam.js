@@ -70,19 +70,19 @@ export default class CreateTeam extends React.Component {
         skill_5: this.state.skill_5
       })
     }
-// creating new team document to be populated later
+    // creating new team document to be populated later
     API.createNewTeam({
       teamName: this.state.teamName,
       manager: this.state.manager,
       startDate: this.state.teamStartDate,
       endDate: this.state.teamEndDate,
     })
-    .then(res => {
-      console.log("this is the return for create new team")
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        console.log("this is the return for create new team")
+      })
+      .catch(err => console.log(err));
 
-// create new team request document
+    // create new team request document
     API.addNewTeamRequirements({
       teamName: this.state.teamName,
       teamStartDate: this.state.teamStartDate,
@@ -95,12 +95,23 @@ export default class CreateTeam extends React.Component {
         console.log("this is the return for create new team requirement")
         console.log(res.data)
         // redirect to user page
+        this.findMatchingEmployees(this.state.teamName);
         this.redirectUserPage();
         this.resetState();
 
       })
       .catch(err => console.log(err));
 
+  };
+
+  // call a function to make the comparisons
+  findMatchingEmployees = (teamName) => {
+    console.log("finding matching employees")
+    API.logicForPool(teamName)
+      .then(res => {
+        console.log("this is the return for findMatching Employees")
+      })
+      .catch(err => console.log(err));
   };
 
   resetState = () => {
@@ -127,20 +138,14 @@ export default class CreateTeam extends React.Component {
 
   redirectUserPage = () => {
     this.props.history.push({
-      pathname:"/modify",
-      state:{
-          teamName: this.state.teamName
-       }
-     });
+      pathname: "/modify",
+      state: {
+        teamName: this.state.teamName
+      }
+    });
   };
 
 
-  
-
-
-  // redirectUserPage = () => {
-  //   this.props.history.push("/user");
-  // };
 
   render() {
     return (
