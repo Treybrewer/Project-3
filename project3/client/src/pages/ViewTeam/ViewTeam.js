@@ -17,7 +17,7 @@ export default class ViewTeam extends React.Component {
 
   setTeamName = () => {
     this.setState({
-      teamArray: ""
+      teamArray: []
     });
 
     if (this.props.location.state.teamName) {
@@ -38,7 +38,7 @@ export default class ViewTeam extends React.Component {
 
   getSpecificTeam = (teamName) => {
     this.setState({
-      teamArray: ""
+      teamArray: []
     })
 
     API.getSpecificTeam(teamName)

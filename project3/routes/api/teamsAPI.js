@@ -25,11 +25,12 @@ router.route("/")
 
   router.route("/:teamname")
   .get((req, res) => {
+    console.log("222222222")
     teams.findByTeamName(req.params.teamname)
-    // .populate("Employee")
+
       .then(dbresults => {
-        // console.log("!!!!!!!!this is the team array with populate")
-        // console.log(dbresults);
+       console.log("222222 this should be only one team document here")
+        console.log(dbresults);
         res.json(dbresults)
       })
         

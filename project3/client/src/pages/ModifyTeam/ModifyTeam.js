@@ -89,7 +89,7 @@ export default class ModifyTeam extends React.Component {
 
 
   addToTeam = (employeeNumber) => {
-    // console.log("this is the add to team #: " + employeeNumber);
+    console.log("this is the add to team #: " + employeeNumber);
 
     let data = {
       addedToTeam: true
@@ -97,8 +97,8 @@ export default class ModifyTeam extends React.Component {
 
     API.updateTeamPool(employeeNumber, data)
       .then(res => {
-        // console.log("this is the return for updateteampool()")
-        // console.log(res.data)
+        console.log("this is the return for updateteampool()")
+        console.log(res.data)
         this.teamPool(this.state.teamName);
         // this.currentTeam();
       })
@@ -132,12 +132,12 @@ export default class ModifyTeam extends React.Component {
 
     API.getSpecificTeamPool(teamName)
       .then(res => {
-        // console.log("??????? this is the return for getspecificteampool()")
-        // console.log(res.data)
+        console.log("??????? this is the return for getspecificteampool()")
+        console.log(res.data)
         // here sort and display only employees where addedtoteam is true
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].addedToTeam === true) {
-            // console.log(`this one matches ${res.data[i].firstName}`)
+            console.log(`this one matches ${res.data[i].firstName}`)
             tempArray.push(res.data[i]);
             this.setState({
               currentTeamArray: tempArray

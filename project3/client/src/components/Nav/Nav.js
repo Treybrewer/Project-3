@@ -15,11 +15,11 @@ export default class Nav extends React.Component {
         } 
     }
   }
-  componentDidUnmount() {
-    window.onscroll=function() {
-      undefined
-    }
-  }
+  // componentDidUnmount() {
+  //   window.onscroll=function() {
+  //     undefined
+  //   }
+  // }
   render() {
     return (
       <nav>
@@ -32,10 +32,7 @@ export default class Nav extends React.Component {
 
           <a href="/">Logout</a>
 
-          {/* <a href="/input">Input</a>
-          <a href="/update">Update</a>
-          <a href="/results">Search</a>
-          <a href="/admin">Admin</a> */}
+         
           </div>
 
       </nav>
