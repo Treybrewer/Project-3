@@ -18,8 +18,8 @@ module.exports = {
   //     .findById(company)
   // },
   create: function (data) {
-    console.log("employeesController.js.create");
-    console.log(data);
+    // console.log("employeesController.js.create");
+    // console.log(data);
     return db.employeeModel
       .create(data)
   },
@@ -31,7 +31,7 @@ module.exports = {
       .findOneAndUpdate({ employeeNumber: employeeNumber }, data, {new: true})
   },
   remove: function (employeeNumber) {
-    console.log("removing this one: " + employeeNumber)
+    // console.log("removing this one: " + employeeNumber)
     return db.employeeModel
     .findOneAndRemove({employeeNumber: employeeNumber})
       // .findById({ company: company })

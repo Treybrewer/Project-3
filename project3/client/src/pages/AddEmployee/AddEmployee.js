@@ -1,6 +1,7 @@
 import React, {Component} from 'react';  
 import API from '../../utils/API';
 import "./AddEmployee.css";
+import AdminNav from '../../components/AdminNav';
 
 
 export default class AddEmployee extends React.Component {
@@ -110,6 +111,7 @@ let data = [];
 render() {
   return (
     <div >
+      <AdminNav />
     <br />
     <br />
     <br />

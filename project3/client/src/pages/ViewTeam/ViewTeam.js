@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./ViewTeam.css";
-
-/* Import Components */
+import CreateStatusBar from '../../components/CreateStatusBar';
+import Nav from '../../components/Nav';
 
 export default class ViewTeam extends React.Component {
   state = {
@@ -12,30 +12,31 @@ export default class ViewTeam extends React.Component {
 
   componentDidMount = () => {
     this.setTeamName();
-    this.getSpecificTeam(this.state.teamName)
+    // this.getSpecificTeam(this.state.teamName)
   };
 
   setTeamName = () => {
-
     this.setState({
       teamArray: ""
-    })
+    });
 
-    console.log(this.props.location.state.teamName)
     if (this.props.location.state.teamName) {
       this.setState({
         teamName: this.props.location.state.teamName
       })
-      this.getSpecificTeam(this.state.teamName)
+
     } else {
-      console.log("no team array is present")
-    }
+      this.setState({
+        teamName: sessionStorage.getItem("sessionCompanyName")
+      })
+    };
+
+    this.getSpecificTeam(this.state.teamName);
 
   }
 
 
   getSpecificTeam = (teamName) => {
-
     this.setState({
       teamArray: ""
     })
@@ -72,28 +73,15 @@ export default class ViewTeam extends React.Component {
   render() {
     return (
       <div >
-
+      <Nav />
         <br />
         <br />
         <br />
         <br />
         <br />
-        <h1 className="text-center">Create Team</h1>
 
-        <div className="row">
-          <div className="col-4 text-center">
-            <h3 className="text-center"></h3>
-          </div>
+        <CreateStatusBar view="View Team Members" />
 
-          <div className="col-4 text-center">
-            <h3 className="text-center"></h3>
-          </div>
-
-          <div className="col-4 text-center">
-            <h3 className="text-center">View Team Members</h3>
-          </div>
-
-        </div>
         <hr />
         <br />
         <br />

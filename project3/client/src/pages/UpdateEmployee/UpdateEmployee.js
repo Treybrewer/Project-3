@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./UpdateEmployee.css";
 import UpdateEmployeeList from "../../components/UpdateEmployeeList";
+import AdminNav from '../../components/AdminNav';
 
 
 export default class UpdateEmployee extends React.Component {
@@ -209,6 +210,7 @@ export default class UpdateEmployee extends React.Component {
   render() {
     return (
       <div >
+        <AdminNav />
         <br />
         <br />
         <br />

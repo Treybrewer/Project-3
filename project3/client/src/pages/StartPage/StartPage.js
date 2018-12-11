@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
-import "./User.css";
-import Nav from '../../components/Nav';
+import "./StartPage.css";
+import LandingPageNav from '../../components/LandingPageNav';
 
 
-export default class User extends React.Component {
+export default class StartPage extends React.Component {
 
 
   render() {
     return (
       <div>
-        <Nav />
+        <LandingPageNav />
         <div className="form-style">
           <br />
           <br />
@@ -20,12 +20,11 @@ export default class User extends React.Component {
           <div>This is the home page once the user has logged in.</div>
 
 
-          <a href="/create">Enter New Team Requirements</a>
+          <a href="/user">Begin Building a Team</a>
           <br />
-          <a href="/modify">Select Team Members</a>
+          <a href="/admin">Admin Page</a>
           <br />
-          <a href="/viewteam">View Team</a>
-         
+          
 
         </div>
       </div>
