@@ -25,8 +25,10 @@ export default class LandingPageNav extends React.Component {
       <nav>
         <div id="topNav">
           <a href="/"><span id="companyName">HorseShoe Business Solutions</span></a>
-          {/* <a href="/start">Landing Page</a> */}
-          <a href="/user">Build Team</a>
+         
+          <a href="/build">Build Team</a>
+          <a href="/viewteam">view Team</a>
+          <a href="/modify">Modify Team</a>
           <a href="/admin">Admin</a>
          
 
