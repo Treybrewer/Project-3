@@ -9,9 +9,11 @@ module.exports = {
 
   },
   findByTeamName: function (teamName) {
+    console.log("222 see if this team name matches")
+    console.log(teamName);
     return db.teamModel
       .findOne({ teamName: teamName })
-      // .populate("Employee")
+      .populate("Pool")
   },
 
   create: function (data) {
@@ -22,7 +24,7 @@ module.exports = {
   },
 
   update: function (teamName, data) {
-    // console.log("teamcontroller.js ")
+    // console.log("@@@@@@@@@@@@@@@@@@teamcontroller.js ")
     // console.log(teamName);
     // console.log(data);
     return db.teamModel

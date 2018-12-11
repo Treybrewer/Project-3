@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./ModifyTeam.css";
+import CreateStatusBar from '../../components/CreateStatusBar';
+import Nav from '../../components/Nav';
 
 
-/* Import Components */
 
 export default class ModifyTeam extends React.Component {
   state = {
@@ -31,6 +32,10 @@ export default class ModifyTeam extends React.Component {
     if (this.props.location.state.teamName) {
       this.setState({
         teamName: this.props.location.state.teamName
+      })
+    } else {
+      this.setState({
+        teamName: sessionStorage.getItem("sessionCompanyName")
       })
     }
   };
@@ -69,8 +74,8 @@ export default class ModifyTeam extends React.Component {
 
     API.getSpecificTeamRequirements(teamName)
       .then(res => {
-        console.log("!!!!!this is the return for getspecificteam requirements()")
-        console.log(res.data)
+        // console.log("!!!!!this is the return for getspecificteam requirements()")
+        // console.log(res.data)
         this.setState({
           manager: res.data.manager,
           teamStartDate: res.data.teamStartDate,
@@ -84,7 +89,7 @@ export default class ModifyTeam extends React.Component {
 
 
   addToTeam = (employeeNumber) => {
-    // console.log("this is the add to team #: " + employeeNumber);
+    console.log("this is the add to team #: " + employeeNumber);
 
     let data = {
       addedToTeam: true
@@ -92,8 +97,8 @@ export default class ModifyTeam extends React.Component {
 
     API.updateTeamPool(employeeNumber, data)
       .then(res => {
-        // console.log("this is the return for updateteampool()")
-        // console.log(res.data)
+        console.log("this is the return for updateteampool()")
+        console.log(res.data)
         this.teamPool(this.state.teamName);
         // this.currentTeam();
       })
@@ -147,16 +152,25 @@ export default class ModifyTeam extends React.Component {
 
 
 
+
+
+
+  
   submitTeam = () => {
-    console.log("submitting team")
+    // console.log("submitting team")
     new Promise((resolve, reject) => {
       for (var i = 0; i < this.state.currentTeamArray.length; i++) {
 
+
+        // need to find the correct _id from the employee collection to update here!!!!!!
+                    //   employeeNumber: this.state.currentTeamArray[i].employeeNumber
+                    //    _id: this.state.currentTeamArray[i]._id
         API.updateTeam(this.state.teamName, { _id: this.state.currentTeamArray[i]._id })
           .then(res => {
             // console.log("added to team collection array")
           })
           .catch(err => console.log(err));
+          
         // changing available status to false in employee collection
         this.updateAvailability(this.state.currentTeamArray[i].employeeNumber)
       }
@@ -168,8 +182,9 @@ export default class ModifyTeam extends React.Component {
   updateAvailability = (employeeNumber) => {
     console.log(`this is the employee number for changing availability: ${employeeNumber}`);
 
+
     API.updateEmployee(employeeNumber, {
-      available: false
+      available: false 
     })
       .then(res => {
         console.log("changed available to false")
@@ -194,28 +209,15 @@ export default class ModifyTeam extends React.Component {
   render() {
     return (
       <div >
+        <Nav />
         <br />
         <br />
         <br />
         <br />
         <br />
-        <h1 className="text-center">Create Team</h1>
 
-        <div className="row">
-          <div className="col-4 text-center">
-            <h3 className="text-center"></h3>
-          </div>
-
-          <div className="col-4 text-center">
-            <h3 className="text-center">Select Team Members</h3>
-          </div>
-
-          <div className="col-4 text-center">
-            <h3 className="text-center"></h3>
-          </div>
-
-        </div>
-
+        <CreateStatusBar modify="Select Team Members" />
+       
         <hr />
         <div>This is the team name to begin selecting users: {this.state.teamName}</div>
 

@@ -16,12 +16,22 @@ WebFont.load({
 
 export default class Home extends React.Component {
 
+  componentDidMount = () => {
+    sessionStorage.clear();
+  };
+
+  saveUserName = (name) => {
+    sessionStorage.setItem("name", name);
+  };
+
   render() {
     return (
       <div>
+       
         <div id="hero">
-          <div id="blur-section">
-            <h1> HORSESHOE SOLUTIONS</h1>
+          <div id="hero-overlay">
+            <div id="blur-section">
+            <h1> <a href="/start">HORSESHOE SOLUTIONS</a></h1>
             <h2> All of your business sampling needs </h2>
           </div>
         </div>

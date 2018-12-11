@@ -4,6 +4,7 @@ import "./Admin.css";
 import ResultsSelection from '../../components/ResultsSelection';
 import ResultsList from '../../components/ResultsList';
 import ResultsToolBar from '../../components/ResultsToolBar/ResultsToolBar';
+import AdminNav from '../../components/AdminNav';
 
 
 
@@ -21,6 +22,7 @@ export default class Admin extends React.Component {
   render() {
     return (
       <div>
+        <AdminNav />
         <br />
         <br />
         <br />

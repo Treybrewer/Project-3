@@ -24,6 +24,7 @@ router.route("/")
 
   router.route("/:teamname")
   .get((req, res) => {
+    console.log("333333333333")
     pool.findByTeamName(req.params.teamname)
       .then(dbresults => {
         // console.log("this is all matches for teamName")
