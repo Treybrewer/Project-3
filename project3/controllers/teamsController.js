@@ -9,6 +9,8 @@ module.exports = {
 
   },
   findByTeamName: function (teamName) {
+    console.log("222 see if this team name matches")
+    console.log(teamName);
     return db.teamModel
       .findOne({ teamName: teamName })
       .populate("Pool")
