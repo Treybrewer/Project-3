@@ -135,7 +135,7 @@ export default class CreateTeam extends React.Component {
       manager: "",
       dateCreated: "",
 
-      assetsArray: "",
+      assetsArray: [],
     })
   };
 
