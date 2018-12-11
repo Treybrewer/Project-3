@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #topNav {
     background-color: #789198;
     overflow: hidden;
