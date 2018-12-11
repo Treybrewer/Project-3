@@ -26,7 +26,7 @@ getAllEmployees: function() {
   return axios.get("/api/employees");
 },
 
-// working on this one now
+// working on this one now 77777777777777777
 updateEmployee: function (employeeNumber, data) {
   return axios.put("/api/employees/" + employeeNumber, data);
 },
@@ -46,6 +46,8 @@ getAllTeamPool: function() {
   return axios.get("/api/pool");
 },
 
+
+//   77777777777777777777777777777  this one works
 updateTeamPool: function(employeeNumber, data) {
   return axios.put("/api/pool/"+employeeNumber, data)
 },
@@ -53,10 +55,10 @@ updateTeamPool: function(employeeNumber, data) {
 
 
 updateTeam: function(teamName, data) {
-  // console.log("update team with employees")
-  // console.log(teamName)
-  // console.log("this should be the _id")
-  // console.log(data);
+  console.log("update team with employees")
+  console.log(teamName)
+  console.log("this should be employee's info")
+  console.log(data);
   return axios.put("/api/teams/"+teamName, data);
 },
 

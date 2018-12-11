@@ -155,7 +155,7 @@ export default class ModifyTeam extends React.Component {
 
 
 
-  
+
   submitTeam = () => {
     // console.log("submitting team")
     new Promise((resolve, reject) => {
@@ -163,16 +163,27 @@ export default class ModifyTeam extends React.Component {
 
 
         // need to find the correct _id from the employee collection to update here!!!!!!
-                    //   employeeNumber: this.state.currentTeamArray[i].employeeNumber
-                    //    _id: this.state.currentTeamArray[i]._id
-        API.updateTeam(this.state.teamName, { _id: this.state.currentTeamArray[i]._id })
+        //   employeeNumber: this.state.currentTeamArray[i].employeeNumber
+        //    _id: this.state.currentTeamArray[i]._id
+        API.updateTeam(this.state.teamName, 
+          { 
+            firstName: this.state.currentTeamArray[i].firstName,
+            lastName: this.state.currentTeamArray[i].lastName,
+            employeeNumber: this.state.currentTeamArray[i].employeeNumber,
+            assets: this.state.currentTeamArray[i].assets,
+          }
+          )
           .then(res => {
             // console.log("added to team collection array")
           })
           .catch(err => console.log(err));
-          
+
+
         // changing available status to false in employee collection
         this.updateAvailability(this.state.currentTeamArray[i].employeeNumber)
+
+
+
       }
       resolve(this.redirectViewTeamPage());
     })
@@ -182,10 +193,11 @@ export default class ModifyTeam extends React.Component {
   updateAvailability = (employeeNumber) => {
     console.log(`this is the employee number for changing availability: ${employeeNumber}`);
 
+    let data = {
+      available: false
+    };
 
-    API.updateEmployee(employeeNumber, {
-      available: false 
-    })
+    API.updateEmployee(employeeNumber, data)
       .then(res => {
         console.log("changed available to false")
         console.log(res.data);
@@ -217,7 +229,7 @@ export default class ModifyTeam extends React.Component {
         <br />
 
         <CreateStatusBar modify="Select Team Members" />
-       
+
         <hr />
         <div>This is the team name to begin selecting users: {this.state.teamName}</div>
 
@@ -310,33 +322,32 @@ export default class ModifyTeam extends React.Component {
 
 
 
+// WOULD LIKE TO GET THIS WORKING.....
 
 // submitTeam = () => {
-//   console.log("submitting team")
+//   // console.log("submitting team")
 //   new Promise((resolve, reject) => {
 //     for (var i = 0; i < this.state.currentTeamArray.length; i++) {
-//       API.updateTeam(
-//         { teamName : this.state.teamName },
 
-//         {
-//           teamName: this.state.teamName,
-//           manager: this.state.manager,
-//           startDate: this.state.teamStartDate,
-//           endDate: this.state.teamEndDate,
-//           firstName: this.state.currentTeamArray[i].firstName,
-//           lastName: this.state.currentTeamArray[i].lastName,
-//           employeeNumber: this.state.currentTeamArray[i].employeeNumber,
-//           assets: this.state.currentTeamArray[i].assets,
-//       })
+
+//       // need to find the correct _id from the employee collection to update here!!!!!!
+//       //   employeeNumber: this.state.currentTeamArray[i].employeeNumber
+//       //    _id: this.state.currentTeamArray[i]._id
+//       API.updateTeam(this.state.teamName, { _id: this.state.currentTeamArray[i]._id })
 //         .then(res => {
-//           console.log("saved to team collection")
+//           // console.log("added to team collection array")
 //         })
 //         .catch(err => console.log(err));
+
+
+//       // changing available status to false in employee collection
+//       this.updateAvailability(this.state.currentTeamArray[i].employeeNumber)
+
+
+
 //     }
 //     resolve(this.redirectViewTeamPage());
 //   })
 
 // };
-
-
 
