@@ -11,6 +11,8 @@ import AddEmployee from "./pages/AddEmployee";
 import UpdateEmployee from "./pages/UpdateEmployee";
 import ModifyLogin from "./pages/ModifyLogin";
 import ViewTeam from "./pages/ViewTeam";
+import StartPage from "./pages/StartPage";
+
 
 
 
@@ -18,11 +20,12 @@ import ViewTeam from "./pages/ViewTeam";
 const App = () => (
   <Router>
     <div>
-      <Nav />
+      {/* <Nav /> */}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/user" component={User} />
+        <Route exact path="/start" component={StartPage} />
 
+        <Route exact path="/user" component={User} />
         <Route exact path="/create" component={CreateTeam} />
         <Route exact path="/modify" component={ModifyTeam} />
         <Route exact path="/viewteam" component={ViewTeam} />

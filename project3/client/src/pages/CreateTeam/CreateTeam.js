@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./CreateTeam.css";
-
+import CreateStatusBar from '../../components/CreateStatusBar';
+import Nav from '../../components/Nav';
 
 export default class CreateTeam extends React.Component {
   state = {
@@ -34,46 +35,48 @@ export default class CreateTeam extends React.Component {
   onSubmit = event => {
     event.preventDefault();
 
+    sessionStorage.setItem("sessionCompanyName", this.state.teamName);
+
     let data = [];
 
     if (this.state.language_1) {
       data.push({
-        language: this.state.language_1.toLowerCase(),
+        language: this.state.language_1,
         skill: this.state.skill_1
       })
     }
 
     if (this.state.language_2) {
       data.push({
-        language: this.state.language_2.toLowerCase(),
+        language: this.state.language_2,
         skill: this.state.skill_2
       })
     }
 
     if (this.state.language_3) {
       data.push({
-        language: this.state.language_3.toLowerCase(),
+        language: this.state.language_3,
         skill: this.state.skill_3
       })
     }
 
     if (this.state.language_4) {
       data.push({
-        language: this.state.language_4.toLowerCase(),
+        language: this.state.language_4,
         skill: this.state.skill_4
       })
     }
 
     if (this.state.language_5) {
       data.push({
-        language: this.state.language_5.toLowerCase(),
+        language: this.state.language_5,
         skill: this.state.skill_5
       })
     }
     // creating new team document to be populated later
     API.createNewTeam({
-      teamName: this.state.teamName.toLowerCase(),
-      manager: this.state.manager.toLowerCase(),
+      teamName: this.state.teamName,
+      manager: this.state.manager,
       startDate: this.state.teamStartDate,
       endDate: this.state.teamEndDate,
     })
@@ -84,10 +87,10 @@ export default class CreateTeam extends React.Component {
 
     // create new team request document
     API.addNewTeamRequirements({
-      teamName: this.state.teamName.toLowerCase(),
+      teamName: this.state.teamName,
       teamStartDate: this.state.teamStartDate,
       teamEndDate: this.state.teamEndDate,
-      manager: this.state.manager.toLowerCase(),
+      manager: this.state.manager,
       assets: data,
 
     })
@@ -150,32 +153,14 @@ export default class CreateTeam extends React.Component {
   render() {
     return (
       <div >
+        <Nav />
         <br />
         <br />
         <br />
         <br />
         <br />
-
-        <h1 className="text-center">Create Team</h1>
-
-        <div className="row">
-          <div className="col-4 text-center">
-            <h3 className="text-center">Enter Team Requirements</h3>
-          </div>
-
-          <div className="col-4 text-center">
-            <h3 className="text-center"></h3>
-          </div>
-
-          <div className="col-4 text-center">
-            <h3 className="text-center"></h3>
-          </div>
-
-        </div>
-
+  <CreateStatusBar requirements="Enter Team Requirements" />
         <hr />
-
-
 
         <form>
 
@@ -341,13 +326,6 @@ export default class CreateTeam extends React.Component {
               />
             </div>
           </div>
-
-
-
-
-
-
-
 
 
           <br />

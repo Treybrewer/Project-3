@@ -1,8 +1,8 @@
 import React from "react";
-import "./nav.css";
+import "./LandingPageNav.css";
 // nav-bar functionality
 
-export default class Nav extends React.Component {
+export default class LandingPageNav extends React.Component {
   componentDidMount() {
     const navBar = document.getElementById('topNav'); 
     window.onscroll = function() {
@@ -25,17 +25,14 @@ export default class Nav extends React.Component {
       <nav>
         <div id="topNav">
           <a href="/"><span id="companyName">HorseShoe Business Solutions</span></a>
-          <a href="/start">Home</a>
-          <a href="/create">Enter Requirements</a>
-          <a href="/modify">Select Members</a>
-          <a href="/viewteam">View Team</a>
+          {/* <a href="/start">Landing Page</a> */}
+          <a href="/user">Build Team</a>
+          <a href="/admin">Admin</a>
+         
 
           <a href="/">Logout</a>
 
-          {/* <a href="/input">Input</a>
-          <a href="/update">Update</a>
-          <a href="/results">Search</a>
-          <a href="/admin">Admin</a> */}
+         
           </div>
 
       </nav>

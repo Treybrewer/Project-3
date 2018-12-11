@@ -1,8 +1,8 @@
 import React from "react";
-import "./nav.css";
+import "./AdminNav.css";
 // nav-bar functionality
 
-export default class Nav extends React.Component {
+export default class AdminNav extends React.Component {
   componentDidMount() {
     const navBar = document.getElementById('topNav'); 
     window.onscroll = function() {
@@ -26,16 +26,13 @@ export default class Nav extends React.Component {
         <div id="topNav">
           <a href="/"><span id="companyName">HorseShoe Business Solutions</span></a>
           <a href="/start">Home</a>
-          <a href="/create">Enter Requirements</a>
-          <a href="/modify">Select Members</a>
-          <a href="/viewteam">View Team</a>
+          <a href="/addemployee">Add Employee</a>
+          <a href="/updateemployee">Update Employee</a>
+          <a href="/modifylogin">Update Passwords</a>
 
           <a href="/">Logout</a>
 
-          {/* <a href="/input">Input</a>
-          <a href="/update">Update</a>
-          <a href="/results">Search</a>
-          <a href="/admin">Admin</a> */}
+         
           </div>
 
       </nav>
