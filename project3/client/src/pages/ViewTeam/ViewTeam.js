@@ -6,68 +6,49 @@ import Nav from '../../components/Nav';
 
 export default class ViewTeam extends React.Component {
   state = {
-    teamName: "",
-    teamArray: [],
+    teamsArray: [],
+    selectedTeam: [],
+
+    showTeam: false,
+
   };
 
-  // componentDidMount = () => {
-  //   this.setTeamName();
-  //   // this.getSpecificTeam(this.state.teamName)
-  // };
+  componentDidMount = () => {
+    // this.teamPool();
+    // this.currentTeam();
+    this.getTeamNames();
+  };
 
-  // setTeamName = () => {
-  //   this.setState({
-  //     teamArray: []
-  //   });
+  getTeamNames = () => {
+    API.getTeam()
+      .then(res => {
+        console.log("this is the return for geting teams to create a name list")
+        console.log(res.data)
 
-  //   if (this.props.location.state.teamName) {
-  //     this.setState({
-  //       teamName: this.props.location.state.teamName
-  //     })
+       
+        this.setState({
+          teamsArray: res.data
+        })
+      })
+      .catch(err => console.log(err));
+  };
 
-  //   } else {
-  //     this.setState({
-  //       teamName: sessionStorage.getItem("sessionCompanyName")
-  //     })
-  //   };
+  showTeam = (teamName) => {
+    API.getSpecificTeam(teamName)
+      .then(res => {
+        console.log("this is the team to view")
+        console.log(res.data)
+        let tempArray = [];
+        tempArray.push(res.data)
 
-  //   this.getSpecificTeam(this.state.teamName);
+        this.setState({
+          selectedTeam: tempArray,
+          showTeam: true,
+        })
+      })
+      .catch(err => console.log(err));
 
-  // }
-
-
-  // getSpecificTeam = (teamName) => {
-  //   this.setState({
-  //     teamArray: []
-  //   })
-
-  //   API.getSpecificTeam(teamName)
-  //     .then(res => {
-  //       console.log("this is the return for getSpecificteam()")
-  //       console.log(res.data)
-  //       this.setState({
-  //         teamArray: res.data,
-  //       })
-  //     })
-  //     .catch(err => console.log(err));
-  // };
-
-  // viewTeam = () => {
-  //   this.getSpecificTeam(this.state.teamName);
-  // };
-
-
-
-  // change = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
-
-  // onSubmit = event => {
-  //   event.preventDefault();
-
-  // };
+  };
 
 
   render() {
@@ -80,20 +61,62 @@ export default class ViewTeam extends React.Component {
         <br />
         <br />
 
-        {/* <CreateStatusBar view="View Team Members" /> */}
+        {/* <CreateStatusBar modify="Select Team Members" /> */}
 
         <hr />
-        <br />
-        <br />
-        <br />
-        <div className="row">
-          <div className="col-2"></div>
-          <div className="col-8">
-            <h3 className="text-center">Select Team to View</h3>
+        <div>Select team to view members</div>
 
+        <div className="row">
+          <div className="col-6">
+
+            <ul>
+              {this.state.teamsArray.map(team => (
+                <li key={team.teamName}>
+                  <h4 onClick={() => this.showTeam(team.teamName)}>Team: {team.teamName}</h4>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-6">
+            <div>
+              {this.state.showTeam ? (
+                <div>
+                  <div>Team Members </div>
+                  <ul>
+                    {this.state.selectedTeam.map(team => (
+                      <li key={team.teamName}>
+                        <div>Team: {team.teamName}</div>
+                        <div>Manager: {team.manager}</div>
+
+                        <ul>
+                          {team.members.map(person => (
+                            <li key={person.employeeNumber}>
+                              <div>{person.firstName} {person.lastName}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+
+                </div>
+              ) : (
+                  <div>No team selected</div>
+                )}
+
+            </div>
 
           </div>
+
         </div>
+
+
+
+
+
+
+
       </div>
     );
   }
