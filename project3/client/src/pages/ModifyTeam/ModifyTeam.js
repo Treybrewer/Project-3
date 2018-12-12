@@ -15,6 +15,11 @@ export default class ModifyTeam extends React.Component {
     teamList: true,
     showToolBar: false,
 
+    modifyTeamData: false,
+    removeTeamMember: false,
+    addTeamMember: false,
+    
+
   };
 
   componentDidMount = () => {
@@ -87,15 +92,16 @@ export default class ModifyTeam extends React.Component {
         {/* <CreateStatusBar modify="Select Team Members" /> */}
 
         <hr />
-        <div>Select team to view members</div>
+        
 
         <div className="row">
           <div className="col-12">
             {this.state.teamList ? (
               <ul>
+                <h3>Select team to modify</h3>
                 {this.state.teamsArray.map(team => (
                   <li key={team.teamName}>
-                    <h4 onClick={() => this.showTeam(team.teamName)}>Team: {team.teamName}</h4>
+                    <div onClick={() => this.showTeam(team.teamName)}>Team: {team.teamName}</div>
                   </li>
                 ))}
               </ul>
@@ -110,6 +116,15 @@ export default class ModifyTeam extends React.Component {
                   />
                 </div>
               )}
+
+              <div>
+                {/* AREA TO MAKE CHANGES BELOW */}
+              
+              
+
+
+
+              </div>
 
 
           </div>

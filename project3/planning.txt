@@ -149,12 +149,17 @@ routes:
 -------------------------------------------
 
 Issues to address
-
-- function to change all inputs to lower-case for comparison. 
-
-- change available to false in the employee collection when they are added to a team. (??????not sure why this isnt working...)
+ ?s for instructor:
+ - change available to false in the employee collection when they are added to a team. (??????not sure why this isnt working...)
 
 - why is 'pool' not populating in the 'teams' collection??????
+
+- how to make a drop-down selection box in react?
+
+
+
+My Issues to correct:
+- function to change all inputs to lower-case for comparison. 
 
 - all seed files need lowercase entries.
 
