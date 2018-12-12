@@ -222,6 +222,12 @@ export default class ModifyTeam extends React.Component {
 <div>{this.state.language_1} </div>
 <div>{this.state.skill_1} </div>
 
+<div>{this.state.language_2} </div>
+<div>{this.state.skill_2} </div>
+
+<div>{this.state.language_3} </div>
+<div>{this.state.skill_3} </div>
+
 
 
                 </div>
