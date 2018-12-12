@@ -1,16 +1,38 @@
+* {
+	box-sizing: border-box;
+}
+
 .form-style {
-    max-width: 500px;
+	max-width: 75%;
+	height: 800px;
 	padding: 10px 20px;
-	background: #f4f7f8;
-	margin: 10px auto;
+	background: transparent;
 	padding: 20px;
-	background: #f4f7f8;
 	border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
-    cursor: pointer;
+	cursor: pointer;
+	margin-top: 200px;
+	
+}
+
+a {
+    color: #333333;
+	text-decoration: none;
+	transition: .3s ease-in-out;
+}
+
+a:hover, a:focus {
+    color: #6EC4A7;
+    text-decoration: underline;
 }
 
 input {
     background: #d2d9dd;
 }
+.btn {
+	margin-left: 10px;
+}
 
+img {
+	margin-bottom: 100px;
+}
