@@ -24,12 +24,12 @@ module.exports = {
   },
 
   update: function (teamName, data) {
-    // console.log("@@@@@@@@@@@@@@@@@@teamcontroller.js ")
-    // console.log(teamName);
-    // console.log(data);
+    // console.log("@@@@@@@@@@@@@@@@@@ pushing data to team [] ")
+    console.log(teamName);
+    console.log(data);
     return db.teamModel
       .findOneAndUpdate({ teamName: teamName },
-        { $push: { members: data } }, {new: true})
+        { $push: {members: data} }, {new: true})
   },
 
   remove: function (teamName) {
@@ -39,4 +39,18 @@ module.exports = {
   }
 
 };
+
+
+
+
+// WOULD LIKE TO GET THIS WORKING...
+
+// update: function (teamName, data) {
+//   // console.log("@@@@@@@@@@@@@@@@@@teamcontroller.js ")
+//   // console.log(teamName);
+//   // console.log(data);
+//   return db.teamModel
+//     .findOneAndUpdate({ teamName: teamName },
+//       { $push: { members: data } }, {new: true})
+// },
 

@@ -26,9 +26,9 @@ export default class Nav extends React.Component {
         <div id="topNav">
           <a href="/"><span id="companyName">HorseShoe Business Solutions</span></a>
           <a href="/start">Home</a>
-          <a href="/create">Enter Requirements</a>
+          {/* <a href="/create">Enter Requirements</a>
           <a href="/modify">Select Members</a>
-          <a href="/viewteam">View Team</a>
+          <a href="/viewteam">View Team</a> */}
 
           <a href="/">Logout</a>
 

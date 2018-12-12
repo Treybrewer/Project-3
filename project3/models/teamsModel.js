@@ -10,10 +10,7 @@ const teamsSchema = new Schema({
   startDate: { type: String },
   endDate: { type: String },
   
-  members: [ {
-    type: Schema.Types.ObjectId,
-    ref: "Pool"
-  } ],
+  members: [],
   
   
   date: { type: Date, default: Date.now }
@@ -24,3 +21,13 @@ const teamsSchema = new Schema({
 const TeamsModel = mongoose.model("Teams", teamsSchema);
 
 module.exports = TeamsModel;
+
+
+
+
+// WOULD LIKE TO GET THIS WORKING...
+
+// members: [ {
+//   type: Schema.Types.ObjectId,
+//   ref: "Pool"
+// } ],

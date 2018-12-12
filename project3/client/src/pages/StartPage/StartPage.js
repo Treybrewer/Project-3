@@ -20,7 +20,11 @@ export default class StartPage extends React.Component {
           <div>This is the home page once the user has logged in.</div>
 
 
-          <a href="/user">Begin Building a Team</a>
+          <a href="/build">Building a Team</a>
+          <br />
+          <a href="/viewteam">view Team</a>
+          <br />
+          <a href="/modify">Modify Team</a>
           <br />
           <a href="/admin">Admin Page</a>
           <br />
