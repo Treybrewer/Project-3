@@ -12,6 +12,7 @@
     z-index: 20;
     width: 100%;
     transition: ease-in-out .5s; 
+    top: 0;
 }
 
 .flex-item{
