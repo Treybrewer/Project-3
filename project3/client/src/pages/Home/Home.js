@@ -29,12 +29,11 @@ export default class Home extends React.Component {
       <div>
        
         <div id="hero">
-          <div id="hero-overlay">
             <div id="blur-section">
-            <h1> <a href="/start">HORSESHOE SOLUTIONS</a></h1>
+            <h1><a href="/start">HORSESHOE SOLUTIONS</a></h1>
             <h2> All of your business sampling needs </h2>
           </div>
-        </div>
+          </div>
         <div id="section-content">
           <div id="image-container">
             <img src={Image} alt="graph picture"></img> 
@@ -45,6 +44,7 @@ export default class Home extends React.Component {
             With the simple implementation of our application you will see results of greater efficiency in planning and workflow.
             Create More Filler Text</h3>
         </div>
+       
        
 
 
