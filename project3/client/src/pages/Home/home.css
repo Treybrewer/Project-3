@@ -7,6 +7,18 @@ h2 {
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 500;
 }
+
+a.nostyle:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+a.nostyle:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
 .form-style {
     max-width: 500px;
 	padding: 10px 20px;
@@ -106,4 +118,32 @@ img {
 	filter:blur(2px);
   }
 
-  
+  #section-content {
+	  padding: 200px;
+	  max-width: 100%;
+	
+  }
+
+ #image-container{
+	max-width: 100%;
+	 display: flex;
+	 justify-content: space-evenly;
+	 margin-bottom: 50px;
+	 transition: all .2s ease-in-out;
+ }
+
+ img:hover {
+	transform: scale(1.1);
+ }
+
+h3 {
+		font-family: 'Nunito Sans', sans-serif;
+		font-weight: 500;
+		font-size: 2.5em;
+		transition: .3s ease-in-out;
+		cursor: pointer;
+}
+
+h3:hover {
+	color: #6EC4A7;
+}

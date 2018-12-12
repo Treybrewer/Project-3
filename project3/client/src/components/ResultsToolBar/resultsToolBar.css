@@ -2,6 +2,9 @@
   box-sizing: border-box;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 .form {
   margin: 20px;

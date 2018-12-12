@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./home.css";
-import image from "./iconfinder_General_Office_18_3592864.png";
-import clock from "./iconfinder_General_Office_44_3592849.png";
 import WebFont from 'webfontloader';
+import Foot from '../../components/Foot';
+import Image from './graph.svg'
+import Image2 from './networking.svg'
+import Image3 from './evaluation.svg'
 
 WebFont.load({
-    google: {
-        families: ['Nunito Sans: 300,400,700', 'sans-serif']
-    }
+  google: {
+    families: ['Nunito Sans: 300,400,700', 'sans-serif']
+  }
 })
 /* Import Components */
 
@@ -27,22 +29,26 @@ export default class Home extends React.Component {
       <div>
        
         <div id="hero">
-          <div id="hero-overlay">
             <div id="blur-section">
-            <h1> <a href="/start">HORSESHOE SOLUTIONS</a></h1>
+            <h1><a href="/start">HORSESHOE SOLUTIONS</a></h1>
             <h2> All of your business sampling needs </h2>
           </div>
-            </div>
+          </div>
+        <div id="section-content">
+          <div id="image-container">
+            <img src={Image} alt="graph picture"></img> 
+            <img src={Image2} alt="team picture"></img> 
+            <img src={Image3} alt="evaluation picture"></img>
+          </div>
+          <h3>Using our business solution will save you and your company countless hours of labor. 
+            With the simple implementation of our application you will see results of greater efficiency in planning and workflow.
+            Create More Filler Text</h3>
         </div>
-        <section id="section-a">
-          <img src={image} />
-            <h2>Offering business solutions that cause greater efficiency in time and labor implementing our propietary application.</h2>
-       </section>
-       <section id="section-b">
-       <img src={clock} />
-            <h2>Implementing the Horshoe product will cut time spent on unwanted tasks and help free up your most valuable asset, time.</h2>
-       </section>
+       
+       
 
+
+        <Foot></Foot>
 
       </div>
     );
