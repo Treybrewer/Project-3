@@ -1,6 +1,6 @@
 import React from "react";
 import "./foot.css";
-import Home from '@material-ui/icons/Home';
+// import Home from '@material-ui/icons/Home';
 import Call from '@material-ui/icons/Call';
 import Email from '@material-ui/icons/Email';
 import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank';
@@ -11,7 +11,7 @@ export const Foot = (props) => (
           <div id="footer-container">
             <div id="footer-section">
               <h2>Contact Us</h2>
-              <Home /> <span id="content">320 E 9th St, Charlotte, NC 28202</span>
+              {/* <Home /> <span id="content">320 E 9th St, Charlotte, NC 28202</span> */}
               <br></br>
               <Call /> <span id="content">980-111-1111</span>
               <br></br>

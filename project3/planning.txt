@@ -98,10 +98,11 @@ COLLECTION: pool
 - Home
     - user log in
 
-- User 
+- Start 
     - links to the following:
         - Create Team page
         - View Teams page
+        - Modify Teams page
         - Admin page 
 
 // the create pages will look like one page        
