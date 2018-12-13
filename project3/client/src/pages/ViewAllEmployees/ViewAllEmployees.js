@@ -29,13 +29,13 @@ export default class ViewAllEmployees extends React.Component {
       .catch(err => console.log(err));
   };
 
-  findSpecificEmployee = (_id) => {
+  findSpecificEmployee = (employeeNumber) => {
     this.setState({
       details: true
     })
     console.log("hellow")
-    console.log(_id)
-    API.getSpecificEmployee(_id)
+    console.log(employeeNumber)
+    API.getSpecificEmployee(employeeNumber)
     .then(res => {
       console.log("this is the return for get specific employees")
       console.log(res.data)

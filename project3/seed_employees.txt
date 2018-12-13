@@ -4,7 +4,7 @@ db.employees.insert({
     lastName: "Smith",
     employeeNumber: 393,
     assets: [{
-        language: "Javascript",
+        language: "javascript",
         level: 3,
     }],
     available: true,
@@ -15,7 +15,7 @@ db.employees.insert({
     lastName: "Thompson",
     employeeNumber: 565,
     assets: [{
-        language: "React.js",
+        language: "react",
         level: 2,
     }],
     available: true,
@@ -26,7 +26,7 @@ db.employees.insert({
     lastName: "Lewis",
     employeeNumber: 787,
     assets: [{
-        language: "Node.js",
+        language: "node",
         level: 3,
     }],
     available:  true,
@@ -37,7 +37,7 @@ db.employees.insert({
     lastName: "Schultz",
     employeeNumber: 582,
     assets: [{
-        language: "Express.js",
+        language: "express",
         level: 3,
     }],
     available:  true,
@@ -48,7 +48,7 @@ db.employees.insert({
     lastName: "Crookson",
     employeeNumber: 777,
     assets: [{
-        language: "CSS",
+        language: "css",
         level: 1,
     }],
     available:  true,
@@ -59,7 +59,7 @@ db.employees.insert({
     lastName: "Smurf",
     employeeNumber: 132,
     assets: [{
-        language: "Mongo",
+        language: "css",
         level: 3,
     }],
     available:  true,
@@ -70,7 +70,7 @@ db.employees.insert({
     lastName: "Boomer",
     employeeNumber: 242,
     assets: [{
-        language: "Java",
+        language: "react",
         level: 3,
     }],
     available: true,
@@ -81,7 +81,7 @@ db.employees.insert({
     lastName: "Boogsh",
     employeeNumber: 868,
     assets: [{
-        language: "C#",
+        language: "c#",
         level: 3,
     }],
     available: true,
@@ -92,7 +92,7 @@ db.employees.insert({
     lastName: "foof",
     employeeNumber: 464,
     assets: [{
-        language: "Python",
+        language: "react",
         level: 2,
     }],
     available: true,
@@ -103,7 +103,7 @@ db.employees.insert({
     lastName: "Yoot",
     employeeNumber: 824,
     assets: [{
-        language: "C++",
+        language: "c#",
         level: 2,
     }],
     available: true,
@@ -114,7 +114,7 @@ db.employees.insert({
     lastName: "Yeet",
     employeeNumber: 096,
     assets: [{
-        language: "C",
+        language: "css",
         level: 2,
     }],
     available: true,
@@ -125,7 +125,7 @@ db.employees.insert({
     lastName: "Crows",
     employeeNumber: 555,
     assets: [{
-        language: "Angular.js",
+        language: "node",
         level: 3,
     }],
     available: true,
@@ -136,7 +136,7 @@ db.employees.insert({
     lastName: "Alfather",
     employeeNumber: 333,
     assets: [{
-        language: "SQL",
+        language: "node",
         level: 3,
     }],
     available: true,
@@ -147,7 +147,7 @@ db.employees.insert({
     lastName: "Boone",
     employeeNumber: 343,
     assets: [{
-        language: "Ember.js",
+        language: "mongo",
         level: 2,
     }],
     available: true,
@@ -158,7 +158,7 @@ db.employees.insert({
     lastName: "Roogan",
     employeeNumber: 353,
     assets: [{
-        language: "PHP",
+        language: "mongo",
         level: 2,
     }],
     available:  true,
@@ -169,7 +169,7 @@ db.employees.insert({
     lastName: "Brush",
     employeeNumber: 363,
     assets: [{
-        language: "Node.js",
+        language: "react",
         level: 5,
     }],
     available:  true,
@@ -180,7 +180,7 @@ db.employees.insert({
     lastName: "Smith",
     employeeNumber: 373,
     assets: [{
-        language: "Javascript",
+        language: "javascript",
         level: 5,
     }],
     available:  true,
@@ -191,7 +191,7 @@ db.employees.insert({
     lastName: "Smith",
     employeeNumber: 383,
     assets: [{
-        language: "Javascript",
+        language: "express",
         level: 5,
     }],
     available:  true,
