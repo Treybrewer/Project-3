@@ -11,6 +11,30 @@ import Image4 from './monitoring.svg';
 export default class StartPage extends React.Component {
 
 
+
+
+  componentDidMount = () => {
+    this.clearStorage();
+  };
+
+  clearStorage = () => {
+    sessionStorage.setItem("sessionTeamName", "");
+    sessionStorage.setItem("sessionStartDate", "");
+    sessionStorage.setItem("sessionEndDate", "");
+    sessionStorage.setItem("sessionManager", "");
+    sessionStorage.setItem("sessionLanguage_1", "");
+    sessionStorage.setItem("sessionSkill_1", "");
+    sessionStorage.setItem("sessionLanguage_2", "");
+    sessionStorage.setItem("sessionSkill_2", "");
+    sessionStorage.setItem("sessionLanguage_3", "");
+    sessionStorage.setItem("sessionSkill_3", "");
+    sessionStorage.setItem("sessionLanguage_4", "");
+    sessionStorage.setItem("sessionSkill_4", "");
+    sessionStorage.setItem("sessionLanguage_5", "");
+    sessionStorage.setItem("sessionSkill_5", "");
+
+  };
+
   render() {
     return (
       <div>
