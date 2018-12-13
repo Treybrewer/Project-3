@@ -28,6 +28,7 @@ getAllEmployees: function() {
 
 // working on this one now 77777777777777777
 updateEmployee: function (employeeNumber, data) {
+
   return axios.put("/api/employees/" + employeeNumber, data);
 },
 
@@ -36,7 +37,7 @@ deleteEmployee: function(employeeNumber) {
 },
 
 getSpecificEmployee: function(employeeNumber) {
-
+console.log(typeof(employeeNumber))
   return axios.get("/api/employees/" + employeeNumber);
 },
 

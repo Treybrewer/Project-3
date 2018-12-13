@@ -3,16 +3,16 @@ const Schema = mongoose.Schema;
 
 const teamsSchema = new Schema({
 
-// insert the search requirements from the company
+  // insert the search requirements from the company
 
   teamName: { type: String },
   manager: { type: String },
   startDate: { type: String },
   endDate: { type: String },
-  
+  assets: [],
   members: [],
-  
-  
+
+
   date: { type: Date, default: Date.now }
 
 

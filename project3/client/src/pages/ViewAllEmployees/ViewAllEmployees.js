@@ -68,7 +68,7 @@ export default class ViewAllEmployees extends React.Component {
 
             <ul>
               {this.state.employeesArray.map(person => (
-                <li onClick={() => this.findSpecificEmployee(person.employeeNumber)} key={person.teamName}>
+                <li onClick={() => this.findSpecificEmployee(person.employeeNumber)} key={person.employeeNumber}>
                   {person.firstName} {person.lastName}
 
                 </li>
