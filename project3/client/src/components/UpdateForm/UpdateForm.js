@@ -5,53 +5,179 @@ import Input from "../Form/index";
 const UpdateForm = (props) => (
 
   <div>
-    <p>Update Form for: {props.company}</p>
+    <p>Update Form for: {props.teamName}</p>
     <br />
     <br />
-    <div>This is the current company Name: {props.company}.</div>
-    <div>To make changes, enter new name below:</div>
-    <form className="form">
+    <form>
 
-      {/* <Input
-        value={this.state.newCompanyName}
-        onChange={this.handleInputChange}
-        name="newCompanyName"
-        placeholder="Enter New Company Name"
-      /> */}
-
-      <input
-        value={props.newCompanyName}
-        name="newCompanyName"
-        onChange={props.handleInputChange}
-        type="text"
-        placeholder="New Company Name"
-      />
-      <br />
-      <br />
-      <div>These are the current search words:</div>
-      <div>{props.searchWords}</div>
-      <div>To make changes, enter all new search words below.</div>
-
-      {/* <Input
-        value={this.state.newSearchWords}
-        onChange={this.handleInputChange}
-        name="newSearchWords"
-        placeholder="Enter all search words"
-      /> */}
+<br />
+<div>What is the teams name?</div>
+<input
+  name='teamName'
+  placeholder='"Team name"'
+  value={this.state.teamName}
+  onChange={event => this.change(event)}
+/>
+<br />
+<div>When will the team begin?</div>
+<input
+  name='teamStartDate'
+  placeholder='"start date"'
+  value={this.state.teamStartDate}
+  onChange={event => this.change(event)}
+/>
+<br />
+<div>When will the team end?</div>
+<input
+  name='teamEndDate'
+  placeholder='"end date"'
+  value={this.state.teamEndDate}
+  onChange={event => this.change(event)}
+/>
+<br />
 
 
-      <input
-        value={props.newSearchWords}
-        name="newSearchWords"
-        onChange={props.handleInputChange}
-        type="text"
-        placeholder="Enter New Search Words"
-      />
-      <br />
-      <br />
+<div>Who is the team manager?</div>
+<input
+  name='manager'
+  placeholder='"Team Manager"'
+  value={this.state.manager}
+  onChange={event => this.change(event)}
+/>
+<br />
+<h3 className="text-center">What coding skill are required?</h3>
+<br />
 
-      <button onClick={props.handleFormSubmit}>Submit</button>
-    </form>
+<div className="row">
+  <div className="col-3"></div>
+  <div className="col-3">
+    <label for="language_1">Language</label>
+    <br />
+    <input
+      name='language_1'
+      placeholder='language'
+      value={this.state.language_1}
+      onChange={event => this.change(event)}
+    />
+  </div>
+
+  <div className="col-3">
+    <label for="skill_1">Skill</label>
+    <br />
+    <input
+      name='skill_1'
+      placeholder='skill'
+      value={this.state.skill_1}
+      onChange={event => this.change(event)}
+    />
+  </div>
+</div>
+
+<div className="row">
+  <div className="col-3"></div>
+  <div className="col-3">
+    {/* <label for="language_2">Language</label> */}
+    <br />
+    <input
+      name='language_2'
+      placeholder='language'
+      value={this.state.language_2}
+      onChange={event => this.change(event)}
+    />
+  </div>
+
+  <div className="col-3">
+    {/* <label for="skill_2">skill</label> */}
+    <br />
+    <input
+      name='skill_2'
+      placeholder='skill'
+      value={this.state.skill_2}
+      onChange={event => this.change(event)}
+    />
+  </div>
+</div>
+
+<div className="row">
+  <div className="col-3"></div>
+  <div className="col-3">
+    {/* <label for="language_1">Language</label> */}
+    <br />
+    <input
+      name='language_3'
+      placeholder='language'
+      value={this.state.language_3}
+      onChange={event => this.change(event)}
+    />
+  </div>
+
+  <div className="col-3">
+    {/* <label for="skill_3">skill</label> */}
+    <br />
+    <input
+      name='skill_3'
+      placeholder='skill'
+      value={this.state.skill_3}
+      onChange={event => this.change(event)}
+    />
+  </div>
+</div>
+
+<div className="row">
+  <div className="col-3"></div>
+  <div className="col-3">
+    {/* <label for="language_4">Language</label> */}
+    <br />
+    <input
+      name='language_4'
+      placeholder='language'
+      value={this.state.language_4}
+      onChange={event => this.change(event)}
+    />
+  </div>
+
+  <div className="col-3">
+    {/* <label for="skill_4">skill</label> */}
+    <br />
+    <input
+      name='skill_4'
+      placeholder='skill'
+      value={this.state.skill_4}
+      onChange={event => this.change(event)}
+    />
+  </div>
+</div>
+
+<div className="row">
+  <div className="col-3"></div>
+  <div className="col-3">
+    {/* <label for="language_5">Language</label> */}
+    <br />
+    <input
+      name='language_5'
+      placeholder='language'
+      value={this.state.language_5}
+      onChange={event => this.change(event)}
+    />
+  </div>
+
+  <div className="col-3">
+    {/* <label for="skill_5">skill</label> */}
+    <br />
+    <input
+      name='skill_5'
+      placeholder='skill'
+      value={this.state.skill_5}
+      onChange={event => this.change(event)}
+    />
+  </div>
+</div>
+
+
+<br />
+
+<button onClick={this.onSubmit}>Submit</button>
+</form>
   </div>
 );
 

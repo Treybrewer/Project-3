@@ -25,8 +25,14 @@ router.route("/")
   router.route("/:employeenumber")
 
   .get((req, res) => {
+    console.log("@@@@@@@@@")
+    console.log(req.params.employeenumber)
     employee.findByEmployeeNumber(req.params.employeenumber)
-      .then(dbresults => res.json(dbresults))
+      .then(dbresults => {
+        console.log("!!!!!!!!!!!!!!!")
+        console.log(dbresults)
+        res.json(dbresults)
+      })
       .catch(err => res.status(422).json(err))
   })
 

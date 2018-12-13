@@ -13,6 +13,7 @@ import ModifyLogin from "./pages/ModifyLogin";
 import ViewTeam from "./pages/ViewTeam";
 import StartPage from "./pages/StartPage";
 import BuildTeam from "./pages/BuildTeam";
+import ViewAllEmployees from "./pages/ViewAllEmployees";
 
 
 
@@ -36,8 +37,9 @@ const App = () => (
         <Route exact path="/admin" component={Admin} />
         <Route exact path="/addemployee" component={AddEmployee} />
         <Route exact path="/updateemployee" component={UpdateEmployee} />
+        <Route exact path="/updateemployee" component={UpdateEmployee} />
         
-        <Route exact path="/modifylogin" component={ModifyLogin} />
+        <Route exact path="/allemployees" component={ViewAllEmployees} />
 
 
 

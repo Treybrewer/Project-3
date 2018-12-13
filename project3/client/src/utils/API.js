@@ -35,6 +35,11 @@ deleteEmployee: function(employeeNumber) {
   return axios.delete("/api/employees/" + employeeNumber);
 },
 
+getSpecificEmployee: function(employeeNumber) {
+
+  return axios.get("/api/employees/" + employeeNumber);
+},
+
 
 
 
