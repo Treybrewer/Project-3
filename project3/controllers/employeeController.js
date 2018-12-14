@@ -9,8 +9,11 @@ module.exports = {
       // .sort({ date: -1 })
   },
   findByEmployeeNumber: function (employeeNumber) {
-    return db.employeeModel
-      .findOne({ employeeNumber: employeeNumber })
+    console.log("????? " + employeeNumber)
+    console.log(employeeNumber)
+    
+     return db.employeeModel
+      .findOne({ employeeNumber : employeeNumber })
   },
 
   // findByCompany: function (company) {

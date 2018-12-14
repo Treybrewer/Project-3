@@ -27,7 +27,7 @@ export default class Admin extends React.Component {
         <br />
         <br />
         <br />
-        <h1>admin page</h1>
+        <h1 className="text-center">Administrative Page</h1>
         <div className="row">
           <div className="col-6">
             <br />
@@ -35,10 +35,7 @@ export default class Admin extends React.Component {
             <br />
             <br />
 
-            <div> this page links to
-              1- manage employees page
-              2- manage user/password page
-            </div>
+           
             <br />
 
             <a href="/addemployee">Add Employee</a>
@@ -46,6 +43,8 @@ export default class Admin extends React.Component {
             <a href="/updateemployee">Update Employee</a>
             <br />
             <a href="/modifylogin">Update users/passwords</a>
+            <br />
+            <a href="/allemployees">View All Employees</a>
             <br />
             <br />
             <a href="/user">Home</a>

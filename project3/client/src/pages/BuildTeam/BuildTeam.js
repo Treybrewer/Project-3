@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
-// import "./BuildTeam.css";
+import './buildTeam.css';
 import CreateStatusBar from '../../components/CreateStatusBar';
 import Nav from '../../components/Nav';
 
@@ -42,13 +42,26 @@ export default class BuildTeam extends React.Component {
 
   setTeamName = () => {
     this.setState({
-      teamName: sessionStorage.getItem("sessionTeamName")
+      teamName: sessionStorage.getItem("sessionTeamName"),
+      teamStartDate: sessionStorage.getItem("sessionStartDate"),
+      teamEndDate: sessionStorage.getItem("sessionEndDate"),
+      language_1: sessionStorage.getItem("sessionLanguage_1"),
+      skill_1: sessionStorage.getItem("sessionSkill_1"),
+      language_2: sessionStorage.getItem("sessionLanguage_2"),
+      skill_2: sessionStorage.getItem("sessionSkill_2"),
+      language_3: sessionStorage.getItem("sessionLanguage_3"),
+      skill_3: sessionStorage.getItem("sessionSkill_3"),
+      language_4: sessionStorage.getItem("sessionLanguage_4"),
+      skill_4: sessionStorage.getItem("sessionSkill_4"),
+      language_5: sessionStorage.getItem("sessionLanguage_5"),
+      skill_5: sessionStorage.getItem("sessionSkill_5"),
+      manager: sessionStorage.getItem("sessionManager"),
     })
   };
 
   change = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value.toLowerCase()
     });
   }
 
@@ -56,6 +69,20 @@ export default class BuildTeam extends React.Component {
     event.preventDefault();
 
     sessionStorage.setItem("sessionTeamName", this.state.teamName);
+    sessionStorage.setItem("sessionStartDate", this.state.teamStartDate);
+    sessionStorage.setItem("sessionEndDate", this.state.teamEndDate);
+    sessionStorage.setItem("sessionManager", this.state.manager);
+    sessionStorage.setItem("sessionLanguage_1", this.state.language_1);
+    sessionStorage.setItem("sessionSkill_1", this.state.skill_1);
+    sessionStorage.setItem("sessionLanguage_2", this.state.language_2);
+    sessionStorage.setItem("sessionSkill_2", this.state.skill_2);
+    sessionStorage.setItem("sessionLanguage_3", this.state.language_3);
+    sessionStorage.setItem("sessionSkill_3", this.state.skill_3);
+    sessionStorage.setItem("sessionLanguage_4", this.state.language_4);
+    sessionStorage.setItem("sessionSkill_4", this.state.skill_4);
+    sessionStorage.setItem("sessionLanguage_5", this.state.language_5);
+    sessionStorage.setItem("sessionSkill_5", this.state.skill_5);
+
 
     let data = [];
 
@@ -99,6 +126,7 @@ export default class BuildTeam extends React.Component {
       manager: this.state.manager,
       startDate: this.state.teamStartDate,
       endDate: this.state.teamEndDate,
+      assets: data,
     })
       .then(res => {
         console.log("this is the return for create new team")
@@ -343,177 +371,146 @@ export default class BuildTeam extends React.Component {
           <div>
             <CreateStatusBar requirements="Enter Team Requirements" />
             <hr />
-
-            <form>
-
-              <br />
-              <div>What is the teams name?</div>
-              <input
-                name='teamName'
-                placeholder='"Team name"'
-                value={this.state.teamName}
-                onChange={event => this.change(event)}
-              />
-              <br />
-              <div>When will the team begin?</div>
-              <input
-                name='teamStartDate'
-                placeholder='"start date"'
-                value={this.state.teamStartDate}
-                onChange={event => this.change(event)}
-              />
-              <br />
-              <div>When will the team end?</div>
-              <input
-                name='teamEndDate'
-                placeholder='"end date"'
-                value={this.state.teamEndDate}
-                onChange={event => this.change(event)}
-              />
-              <br />
-
-
-              <div>Who is the team manager?</div>
-              <input
-                name='manager'
-                placeholder='"Team Manager"'
-                value={this.state.manager}
-                onChange={event => this.change(event)}
-              />
-              <br />
-              <h3 className="text-center">What coding skill are required?</h3>
-              <br />
-
-              <div className="row">
-                <div className="col-3"></div>
-                <div className="col-3">
-                  <label for="language_1">Language</label>
-                  <br />
-                  <input
-                    name='language_1'
-                    placeholder='language'
-                    value={this.state.language_1}
-                    onChange={event => this.change(event)}
-                  />
+            {/* Team Questionaire Info */}
+            <div className="container-fluid">
+              <form>
+                <div className="Form-Container">
+                <h4>team name</h4>
+                <input className="form-control form-control-lg"
+                  name='teamName'
+                  placeholder='"Team name"'
+                  value={this.state.teamName}
+                  onChange={event => this.change(event)}
+                />
+                <h4>start date</h4>
+                <input className="form-control form-control-lg"
+                  name='teamStartDate'
+                  placeholder='"start date"'
+                  value={this.state.teamStartDate}
+                  onChange={event => this.change(event)}
+                />
+                <h4>end date</h4>
+                <input className="form-control form-control-lg"
+                  name='teamEndDate'
+                  placeholder='"end date"'
+                  value={this.state.teamEndDate}
+                  onChange={event => this.change(event)}
+                />
+                <h4>team manager</h4>
+                <input className="form-control form-control-lg"
+                  name='manager'
+                  placeholder='"Team Manager"'
+                  value={this.state.manager}
+                  onChange={event => this.change(event)}
+                />
                 </div>
-
-                <div className="col-3">
-                  <label for="skill_1">Skill</label>
-                  <br />
-                  <input
-                    name='skill_1'
-                    placeholder='skill'
-                    value={this.state.skill_1}
-                    onChange={event => this.change(event)}
-                  />
+                {/* Language and Skill Level Forms */}
+                <h3 className="text-center" id="title-font">CODING SKILLS REQUIRED</h3>
+                <div className="container-fluid">
+                <div className="row">
+                  <div className="col-3">
+                    <label for="language_1"><h4>Language</h4></label>
+                    <input className="form-control form-control-sm"
+                      name='language_1'
+                      placeholder='language'
+                      value={this.state.language_1}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
+                  <div className="col-3">
+                    <label for="skill_1"><h4>Skill</h4></label>
+                    <input className="form-control form-control-sm"
+                      name='skill_1'
+                      placeholder='skill'
+                      value={this.state.skill_1}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="row">
-                <div className="col-3"></div>
-                <div className="col-3">
-                  {/* <label for="language_2">Language</label> */}
-                  <br />
-                  <input
-                    name='language_2'
-                    placeholder='language'
-                    value={this.state.language_2}
-                    onChange={event => this.change(event)}
-                  />
+                <div className="row">
+                  <div className="col-3">
+                    {/* <label for="language_2">Language</label> */}
+                    <input className="form-control form-control-sm"
+                      name='language_2'
+                      placeholder='language'
+                      value={this.state.language_2}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
+                  <div className="col-3">
+                    {/* <label for="skill_2">skill</label> */}
+                    <input className="form-control form-control-sm"
+                      name='skill_2'
+                      placeholder='skill'
+                      value={this.state.skill_2}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
                 </div>
-
-                <div className="col-3">
-                  {/* <label for="skill_2">skill</label> */}
-                  <br />
-                  <input
-                    name='skill_2'
-                    placeholder='skill'
-                    value={this.state.skill_2}
-                    onChange={event => this.change(event)}
-                  />
+                <div className="row">
+                  <div className="col-3">
+                    {/* <label for="language_1">Language</label> */}
+                    <input className="form-control form-control-sm"
+                      name='language_3'
+                      placeholder='language'
+                      value={this.state.language_3}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
+                  <div className="col-3">
+                    {/* <label for="skill_3">skill</label> */}
+                    <input className="form-control form-control-sm"
+                      name='skill_3'
+                      placeholder='skill'
+                      value={this.state.skill_3}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="row">
-                <div className="col-3"></div>
-                <div className="col-3">
-                  {/* <label for="language_1">Language</label> */}
-                  <br />
-                  <input
-                    name='language_3'
-                    placeholder='language'
-                    value={this.state.language_3}
-                    onChange={event => this.change(event)}
-                  />
+                <div className="row">
+                  <div className="col-3">
+                    {/* <label for="language_4">Language</label> */}
+                    <input className="form-control form-control-sm"
+                      name='language_4'
+                      placeholder='language'
+                      value={this.state.language_4}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
+                  <div className="col-3">
+                    {/* <label for="skill_4">skill</label> */}
+                    <input className="form-control form-control-sm"
+                      name='skill_4'
+                      placeholder='skill'
+                      value={this.state.skill_4}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
                 </div>
-
-                <div className="col-3">
-                  {/* <label for="skill_3">skill</label> */}
-                  <br />
-                  <input
-                    name='skill_3'
-                    placeholder='skill'
-                    value={this.state.skill_3}
-                    onChange={event => this.change(event)}
-                  />
+                <div className="row">
+                  <div className="col-3">
+                    {/* <label for="language_5">Language</label> */}
+                    <input className="form-control form-control-sm"
+                      name='language_5'
+                      placeholder='language'
+                      value={this.state.language_5}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
+                  <div className="col-3">
+                    {/* <label for="skill_5">skill</label> */}
+                    <input className="form-control form-control-sm"
+                      name='skill_5'
+                      placeholder='skill'
+                      value={this.state.skill_5}
+                      onChange={event => this.change(event)}
+                    />
+                  </div>
                 </div>
-              </div>
-
-              <div className="row">
-                <div className="col-3"></div>
-                <div className="col-3">
-                  {/* <label for="language_4">Language</label> */}
-                  <br />
-                  <input
-                    name='language_4'
-                    placeholder='language'
-                    value={this.state.language_4}
-                    onChange={event => this.change(event)}
-                  />
                 </div>
-
-                <div className="col-3">
-                  {/* <label for="skill_4">skill</label> */}
-                  <br />
-                  <input
-                    name='skill_4'
-                    placeholder='skill'
-                    value={this.state.skill_4}
-                    onChange={event => this.change(event)}
-                  />
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-3"></div>
-                <div className="col-3">
-                  {/* <label for="language_5">Language</label> */}
-                  <br />
-                  <input
-                    name='language_5'
-                    placeholder='language'
-                    value={this.state.language_5}
-                    onChange={event => this.change(event)}
-                  />
-                </div>
-
-                <div className="col-3">
-                  {/* <label for="skill_5">skill</label> */}
-                  <br />
-                  <input
-                    name='skill_5'
-                    placeholder='skill'
-                    value={this.state.skill_5}
-                    onChange={event => this.change(event)}
-                  />
-                </div>
-              </div>
-
-
-              <br />
-
-              <button onClick={this.createRequirements}>Submit</button>
-            </form>
+                <button onClick={this.createRequirements} className="btn btn-success btn-lg btn-block">Submit</button>
+              </form>
+            </div>
           </div>
 
         ) : (
@@ -524,7 +521,7 @@ export default class BuildTeam extends React.Component {
                   <CreateStatusBar modify="Select Team Members" />
 
                   <hr />
-                  <div>This is the team name to begin selecting users: {this.state.teamName}</div>
+                  <div>Selecting tean member for team: {this.state.teamName}</div>
 
 
                   <div className="row">
@@ -533,9 +530,16 @@ export default class BuildTeam extends React.Component {
                       <ul>
                         {this.state.teamPoolArray.map(person => (
                           <li key={person.employeeNumber}>
-                            <div>
                             <h4>{person.firstName} {person.lastName}</h4>
-                            </div>
+
+                            <ul>
+                              {person.assets.map(language => (
+                                <li key={language.language}>
+                                  <div>Language: {language.language}</div>
+                                  <div>Skill Level: {language.level}</div>
+                                </li>
+                              ))}
+                            </ul>
 
                             {!person.addedToTeam ? (
                               <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>

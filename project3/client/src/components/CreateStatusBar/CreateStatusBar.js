@@ -5,7 +5,7 @@ import "./CreateStatusBar.css";
 const CreateStatusBar = (props) => (
 
   <div>
-    <h1 className="text-center">Develop your Team</h1>
+    <h3 className="text-center" id="title-font">DEVELOP YOUR TEAM</h3>
     <div className="row">
       <div className="col-4 text-center">
         <h3 className="text-center">{props.requirements}</h3>

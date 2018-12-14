@@ -7,7 +7,7 @@ const employeeSchema = new Schema({
 
   firstName: { type: String },
   lastName: { type: String },
-  employeeNumber: { type: String },
+  employeeNumber: { type: Number },
   available: { type: Boolean },
 
   assets: [],
