@@ -533,7 +533,9 @@ export default class BuildTeam extends React.Component {
                       <ul>
                         {this.state.teamPoolArray.map(person => (
                           <li key={person.employeeNumber}>
+                            <div>
                             <h4>{person.firstName} {person.lastName}</h4>
+                            </div>
 
                             {!person.addedToTeam ? (
                               <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
