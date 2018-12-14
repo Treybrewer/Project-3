@@ -35,7 +35,8 @@ export default class ViewAllEmployees extends React.Component {
     })
     console.log("hellow")
     console.log(employeeNumber)
-    API.getSpecificEmployee(employeeNumber)
+    let newEmployeeNumber = parseInt(employeeNumber)
+    API.getSpecificEmployee(newEmployeeNumber)
     .then(res => {
       console.log("this is the return for get specific employees")
       console.log(res.data)

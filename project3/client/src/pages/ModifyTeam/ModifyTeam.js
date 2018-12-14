@@ -83,55 +83,55 @@ export default class ModifyTeam extends React.Component {
       })
       .catch(err => console.log(err));
 
-      API.getSpecificTeamRequirements(teamName)
+    API.getSpecificTeamRequirements(teamName)
       .then(res => {
         console.log("!!!!!!this is the team requirements")
         console.log(res.data)
         this.setState({
-                teamName: res.data.teamName,
-                teamStartDate: res.data.startDate,
-                teamEndDate: res.data.endDate,
-                manager: res.data.manager,
-                language_1: res.data.assets[0].language,
-                skill_1: res.data.assets[0].skill,
-                // language_2: res.data.assets[1].language,
-                // skill_2: res.data.assets[1].skill,
-                // language_3: res.data.assets[2].language,
-                // skill_3: res.data.assets[2].skill,
-                // language_4: res.data.assets[3].language,
-                // skill_4: res.data.assets[3].skill,
-                // language_5: res.data.assets[4].language,
-                // skill_5: res.data.assets[4].skill,
+          teamName: res.data.teamName,
+          teamStartDate: res.data.teamStartDate,
+          teamEndDate: res.data.teamEndDate,
+          manager: res.data.manager,
+          language_1: res.data.assets[0].language,
+          skill_1: res.data.assets[0].skill,
+          // language_2: res.data.assets[1].language,
+          // skill_2: res.data.assets[1].skill,
+          // language_3: res.data.assets[2].language,
+          // skill_3: res.data.assets[2].skill,
+          // language_4: res.data.assets[3].language,
+          // skill_4: res.data.assets[3].skill,
+          // language_5: res.data.assets[4].language,
+          // skill_5: res.data.assets[4].skill,
 
-              })
-
-      if(res.data.assets[1]) {
-        this.setState({
-          language_2: res.data.assets[1].language,
-          skill_2: res.data.assets[1].skill,
         })
-      }
 
-      if(res.data.assets[2]) {
-        this.setState({
-          language_3: res.data.assets[2].language,
-          skill_3: res.data.assets[2].skill,
-        })
-      }
+        if (res.data.assets[1]) {
+          this.setState({
+            language_2: res.data.assets[1].language,
+            skill_2: res.data.assets[1].skill,
+          })
+        }
 
-      if(res.data.assets[3]) {
-        this.setState({
-          language_4: res.data.assets[3].language,
-          skill_4: res.data.assets[3].skill,
-        })
-      }
+        if (res.data.assets[2]) {
+          this.setState({
+            language_3: res.data.assets[2].language,
+            skill_3: res.data.assets[2].skill,
+          })
+        }
 
-      if(res.data.assets[4]) {
-        this.setState({
-          language_5: res.data.assets[4].language,
-          skill_5: res.data.assets[4].skill,
-        })
-      }
+        if (res.data.assets[3]) {
+          this.setState({
+            language_4: res.data.assets[3].language,
+            skill_4: res.data.assets[3].skill,
+          })
+        }
+
+        if (res.data.assets[4]) {
+          this.setState({
+            language_5: res.data.assets[4].language,
+            skill_5: res.data.assets[4].skill,
+          })
+        }
 
 
 
@@ -219,14 +219,52 @@ export default class ModifyTeam extends React.Component {
                   <div>{this.state.teamEndDate} </div>
                   <div>{this.state.manager} </div>
 
-<div>{this.state.language_1} </div>
-<div>{this.state.skill_1} </div>
+                  <div>{this.state.language_1} </div>
+                  <div>{this.state.skill_1} </div>
 
-<div>{this.state.language_2} </div>
-<div>{this.state.skill_2} </div>
+                  <div>{this.state.language_2} </div>
+                  <div>{this.state.skill_2} </div>
 
-<div>{this.state.language_3} </div>
-<div>{this.state.skill_3} </div>
+                  <div>{this.state.language_3} </div>
+                  <div>{this.state.skill_3} </div>
+
+
+                  <input
+                    name='teamName'
+                    placeholder='"Team name"'
+                    value={this.state.teamName}
+                    onChange={event => this.change(event)}
+                  />
+                  <input
+                    name='manager'
+                    placeholder=''
+                    value={this.state.manager}
+                    onChange={event => this.change(event)}
+                  />
+                  <input
+                    name='teamStartDate'
+                    placeholder=''
+                    value={this.state.teamStartDate}
+                    onChange={event => this.change(event)}
+                  />
+                  <input
+                    name='teamEndDate'
+                    placeholder=''
+                    value={this.state.teamEndDate}
+                    onChange={event => this.change(event)}
+                  />
+                  <input
+                    name='language_1'
+                    placeholder=''
+                    value={this.state.language_1}
+                    onChange={event => this.change(event)}
+                  />
+                  <input
+                    name='skill_1'
+                    placeholder=''
+                    value={this.state.skill_1}
+                    onChange={event => this.change(event)}
+                  />
 
 
 
