@@ -39,7 +39,7 @@ export default class StartPage extends React.Component {
     return (
       <div>
         <LandingPageNav />
-        <div className="form-style">
+        <div >
           <div class="container">
             <div class="row align-items-start">
               <div class="col-6">

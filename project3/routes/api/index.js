@@ -5,6 +5,7 @@ const teamsRoutes = require("./teamsAPI");
 const employeeRoutes = require("./employeeAPI");
 const poolRoutes = require("./poolAPI");
 const logicRoutes = require("./logicAPI");
+const populateRoutes = require("./populateAPI");
 
 
 // create team route
@@ -21,6 +22,9 @@ router.use("/teams", teamsRoutes);
 
 // logic routes
 router.use("/logic", logicRoutes);
+
+// populate routes
+router.use("/populate", populateRoutes);
 
 
 

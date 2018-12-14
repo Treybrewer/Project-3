@@ -32,6 +32,12 @@ module.exports = {
     return db.poolModel
     .findOneAndRemove({employeeNumber: employeeNumber})
       
+  },
+  removeAll: function () {
+    console.log("removing Pools, all of them")
+    // console.log("removing this one: " + employeeNumber)
+    return db.poolModel.remove()
+      
   }
 
 };

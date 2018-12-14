@@ -53,7 +53,6 @@ getAllTeamPool: function() {
 },
 
 
-//   77777777777777777777777777777  this one works
 updateTeamPool: function(employeeNumber, data) {
   return axios.put("/api/pool/"+employeeNumber, data)
 },
@@ -86,6 +85,16 @@ logicForPool: function(teamName) {
   // console.log("logicForPool: " + teamName)
 return axios.get("/api/logic/"+teamName);
 },
+
+
+
+populateEmployeePool: function() {
+  return axios.post("/api/populate");
+},
+
+resetAll: function() {
+  return axios.post("/api/populate/reset");
+}
 
 
 
