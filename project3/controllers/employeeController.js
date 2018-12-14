@@ -41,7 +41,13 @@ module.exports = {
   findByAvailable: function () {
     return db.employeeModel
       .find({available: true})
-  }
+  },
+
+  removeAll: function () {
+    return db.employeeModel
+    .deleteMany({})
+      
+  },
 
 };
 

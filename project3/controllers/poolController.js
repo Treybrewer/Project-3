@@ -34,9 +34,7 @@ module.exports = {
       
   },
   removeAll: function () {
-    console.log("removing Pools, all of them")
-    // console.log("removing this one: " + employeeNumber)
-    return db.poolModel.remove()
+    return db.poolModel.deleteMany({})
       
   }
 

@@ -36,6 +36,11 @@ module.exports = {
     // console.log("removing this one: " + teamName)
     return db.teamModel
     .findOneAndRemove({teamName: teamName})
+  },
+  removeAll: function () {
+    return db.teamModel
+    .deleteMany({})
+      
   }
 
 };
