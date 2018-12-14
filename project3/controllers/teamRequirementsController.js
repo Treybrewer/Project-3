@@ -36,6 +36,11 @@ module.exports = {
     .findOneAndRemove({team: team})
       // .findById({ company: company })
       // .then(dbModel => dbModel.remove())
+  },
+  removeAll: function () {
+    return db.teamRequestModel
+    .deleteMany({})
+      
   }
 
 };

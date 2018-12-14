@@ -14,6 +14,7 @@ import ViewTeam from "./pages/ViewTeam";
 import StartPage from "./pages/StartPage";
 import BuildTeam from "./pages/BuildTeam";
 import ViewAllEmployees from "./pages/ViewAllEmployees";
+import Populate from "./pages/Populate";
 
 
 
@@ -40,11 +41,10 @@ const App = () => (
         <Route exact path="/updateemployee" component={UpdateEmployee} />
         
         <Route exact path="/allemployees" component={ViewAllEmployees} />
+        <Route exact path="/populate" component={Populate} />
 
 
-
-
-        {/* <Route component={NoMatch]]} /> */}
+        {/* <Route component={NoMatch} /> */}
       </Switch>
     </div>
   </Router>

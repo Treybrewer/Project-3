@@ -32,6 +32,10 @@ module.exports = {
     return db.poolModel
     .findOneAndRemove({employeeNumber: employeeNumber})
       
+  },
+  removeAll: function () {
+    return db.poolModel.deleteMany({})
+      
   }
 
 };
