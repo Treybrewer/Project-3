@@ -9,6 +9,12 @@ export default class ViewAllEmployees extends React.Component {
     employeesArray: [],
     details: false,
 
+    firstName: '',
+    lastName: '',
+    employeeNumber: '',
+    available: '',
+    assets: [],
+
   };
 
   componentDidMount = () => {
@@ -33,20 +39,24 @@ export default class ViewAllEmployees extends React.Component {
     this.setState({
       details: true
     })
-    console.log("hellow")
-    console.log(employeeNumber)
+    // console.log("hellow")
+    // console.log(employeeNumber)
     let newEmployeeNumber = parseInt(employeeNumber)
     API.getSpecificEmployee(newEmployeeNumber)
-    .then(res => {
-      console.log("this is the return for get specific employees")
-      console.log(res.data)
+      .then(res => {
+        console.log("this is the return for get specific employees")
+        console.log(res.data)
 
 
-      // this.setState({
-      //   employeesArray: res.data
-      // })
-    })
-    .catch(err => console.log(err));
+        this.setState({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          employeeNumber: res.data.employeeNumber,
+          available: res.data.available,
+          assets: res.data.assets
+        })
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -78,19 +88,30 @@ export default class ViewAllEmployees extends React.Component {
           </div>
 
           <div className="col-6">
-          {this.state.details ? (
+            {this.state.details ? (
 
-<div>
+              <div>
+                <div>{this.state.firstName} {this.state.lastName}</div>
+                <div>Employee Number: {this.state.employeeNumber}</div>
+                <div>Languages:</div>
+                <ul>
+                  {this.state.assets.map(language => (
+                    <li key={language.language}>
+                      Language: {language.language},   Level: {language.level}.
+                    </li>
+                  ))}
+                </ul>
 
-  </div>
+
+              </div>
 
 
-          ) : (
+            ) : (
 
-            <div>Click Employee to View Information</div>
-          )}
-          
-          
+                <div>Click Employee to View Information</div>
+              )}
+
+
           </div>
 
         </div>
