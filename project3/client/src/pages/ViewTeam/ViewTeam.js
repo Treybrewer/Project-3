@@ -25,7 +25,7 @@ export default class ViewTeam extends React.Component {
         console.log("this is the return for geting teams to create a name list")
         console.log(res.data)
 
-       
+
         this.setState({
           teamsArray: res.data
         })
@@ -88,6 +88,18 @@ export default class ViewTeam extends React.Component {
                       <li key={team.teamName}>
                         <div>Team: {team.teamName}</div>
                         <div>Manager: {team.manager}</div>
+                        <br/>
+                        <ul>
+                          <div>Languages Required: </div>
+                          {team.assets.map(language => (
+                            <li key={language.language}>
+                              {language.language}
+                            </li>
+                          ))}
+
+                        </ul>
+                                  <br/>
+                            <div>Team Members:</div>
 
                         <ul>
                           {team.members.map(person => (

@@ -10,7 +10,9 @@ module.exports = {
   },
   findByEmployeeNumber: function (employeeNumber) {
     console.log("????? " + employeeNumber)
-    return db.employeeModel
+    console.log(employeeNumber)
+    
+     return db.employeeModel
       .findOne({ employeeNumber : employeeNumber })
   },
 

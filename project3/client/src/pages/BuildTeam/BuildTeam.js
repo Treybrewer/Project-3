@@ -61,7 +61,7 @@ export default class BuildTeam extends React.Component {
 
   change = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value.toLowerCase()
     });
   }
 
@@ -126,6 +126,7 @@ export default class BuildTeam extends React.Component {
       manager: this.state.manager,
       startDate: this.state.teamStartDate,
       endDate: this.state.teamEndDate,
+      assets: data,
     })
       .then(res => {
         console.log("this is the return for create new team")
