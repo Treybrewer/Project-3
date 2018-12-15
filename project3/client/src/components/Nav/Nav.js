@@ -6,7 +6,7 @@ export default class Nav extends React.Component {
   componentDidMount() {
     const navBar = document.getElementById('topNav'); 
     window.onscroll = function() {
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 10) {
             navBar.style.background = "#789198";
             navBar.style.boxShadow = "0px 4px 2px #33333"
         } else  {

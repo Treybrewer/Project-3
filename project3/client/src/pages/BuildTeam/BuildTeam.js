@@ -521,7 +521,7 @@ export default class BuildTeam extends React.Component {
                   <CreateStatusBar modify="Select Team Members" />
 
                   <hr />
-                  <div>Selecting tean member for team: {this.state.teamName}</div>
+                   {this.state.teamName}
 
 
                   <div className="row">
@@ -546,10 +546,6 @@ export default class BuildTeam extends React.Component {
                             ) : (
                                 <button className="btn btn-danger" onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
                               )}
-
-
-                            <div>________________________</div>
-                            <br />
                           </li>
 
 
@@ -594,17 +590,17 @@ export default class BuildTeam extends React.Component {
                         <br />
                         <br />
                         <div className="row">
-                          <div className="col-2"></div>
-                          <div className="col-8">
+                          <div className="col-6"></div>
+                          <div className="col-6">
                             <h3 className="text-center">Team Members</h3>
                             <h4 className="text-center">Team: {this.state.teamName}</h4>
 
                             {this.state.teamArray ? (
-                              <div>
-                                <div>Team Name: {this.state.teamName}</div>
-                                <div>Team Manager: {this.state.teamArray.manager}</div>
-                                <div>Start Date: {this.state.teamArray.startDate}</div>
-                                <div>End Date: {this.state.teamArray.endDate}</div>
+                              <div className="list-group">
+                                <div className="list-group-item">Team Name: {this.state.teamName}</div>
+                                <div className="list-group-item">Team Manager: {this.state.teamArray.manager}</div>
+                                <div className="list-group-item">Start Date: {this.state.teamArray.startDate}</div>
+                                <div className="list-group-item">End Date: {this.state.teamArray.endDate}</div>
                                 <hr />
                                 <div>Members</div>
                                 <ul>

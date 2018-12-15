@@ -42,7 +42,7 @@ export default class Home extends React.Component {
           </div>
           <h3>Using our business solution will save you and your company countless hours of labor. 
             With the simple implementation of our application you will see results of greater efficiency in planning and workflow.
-            Create More Filler Text</h3>
+            </h3>
         </div>
        
        
