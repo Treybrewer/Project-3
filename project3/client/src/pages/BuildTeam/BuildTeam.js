@@ -549,14 +549,14 @@ export default class BuildTeam extends React.Component {
                   <div className="row">
                     <div className="col-6">
                       <h4>Select team from this list</h4>
-                      <ul>
+                      <ul className="list-group">
                         {this.state.teamPoolArray.map(person => (
-                          <li key={person.employeeNumber}>
+                          <li className="list-group-item" key={person.employeeNumber}>
                             <h4>{person.firstName} {person.lastName}</h4>
 
-                            <ul>
+                            <ul className="list-group">
                               {person.assets.map(language => (
-                                <li key={language.language}>
+                                <li className="list-group-item" key={language.language}>
                                   <div>Language: {language.language}</div>
                                   <div>Skill Level: {language.level}</div>
                                 </li>
@@ -564,9 +564,9 @@ export default class BuildTeam extends React.Component {
                             </ul>
 
                             {!person.addedToTeam ? (
-                              <button onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
+                              <button className="btn btn-secondary" onClick={() => this.addToTeam(person.employeeNumber)}>Add To Team</button>
                             ) : (
-                                <button onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
+                                <button className="btn btn-danger" onClick={() => this.removeFromTeam(person.employeeNumber)}>Remove From Team</button>
                               )}
 
 
@@ -584,11 +584,11 @@ export default class BuildTeam extends React.Component {
                       <h4>Current Team Members</h4>
 
                       <div>
-                        <ul>
+                        <ul className="list-group">
 
                           {
                             this.state.currentTeamArray.map(person => (
-                              <li key={person.employeeNumber}>
+                              <li className="list-group-item" key={person.employeeNumber}>
                                 <h4>{person.firstName} {person.lastName}</h4>
 
                                 <br />
@@ -599,7 +599,7 @@ export default class BuildTeam extends React.Component {
                         </ul>
                         <br />
                         <div className="text-center">
-                          <button onClick={this.submitTeam}>Save Team</button>
+                          <button className="btn btn-success" onClick={this.submitTeam}>Save Team</button>
                         </div>
                       </div>
                     </div>
