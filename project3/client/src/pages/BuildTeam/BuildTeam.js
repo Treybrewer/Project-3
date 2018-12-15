@@ -27,6 +27,7 @@ export default class BuildTeam extends React.Component {
     manager: "",
     dateCreated: "",
     assetsArray: [],
+    info: {},
 
     teamPoolArray: [],
     currentTeamArray: [],
@@ -56,6 +57,7 @@ export default class BuildTeam extends React.Component {
       language_5: sessionStorage.getItem("sessionLanguage_5"),
       skill_5: sessionStorage.getItem("sessionSkill_5"),
       manager: sessionStorage.getItem("sessionManager"),
+      info: sessionStorage.getItem("sessionInfo"),
     })
   };
 
@@ -146,7 +148,19 @@ export default class BuildTeam extends React.Component {
         console.log("this is the return for create new team requirement")
         console.log(res.data)
 
-        this.findMatchingEmployees(this.state.teamName);
+        let info = {
+          teamName: this.state.teamName,
+          teamStartDate: this.state.teamStartDate,
+          teamEndDate: this.state.teamEndDate,
+          manager: this.state.manager,
+          assets: data,
+        }
+        sessionStorage.setItem("sessionTeamName", this.state.teamName);
+        sessionStorage.setItem("sessionInfo", info);
+        sessionStorage.setItem("sessionRequirementsPage", false);
+        sessionStorage.setItem("sessionSelectPage", true);
+
+        this.findMatchingEmployees(this.state.teamName, info);
         // this.resetRequirementsState();  not sure what to reset yet
         this.setState({
           requirementsPage: false,
@@ -158,10 +172,18 @@ export default class BuildTeam extends React.Component {
 
   };
 
+  onPageReload = () => {
+    if(this.state.selectPage) {
+      console.log("reload is starting to work")
+      this.findMatchingEmployees(this.state.teamName, this.state.info)
+      this.startBuildingTeam(this.state.teamName)
+    }
+  }
+
   // call a function to make the comparisons
-  findMatchingEmployees = (teamName) => {
+  findMatchingEmployees = (teamName, data) => {
     console.log("finding matching employees")
-    API.logicForPool(teamName)
+    API.logicForPool(teamName, data)
       .then(res => {
         console.log("this is the return for findMatching Employees")
       })
@@ -280,7 +302,7 @@ export default class BuildTeam extends React.Component {
 
 
   submitTeam = () => {
-    // console.log("submitting team")
+    console.log("submitting team")
     new Promise((resolve, reject) => {
       for (var i = 0; i < this.state.currentTeamArray.length; i++) {
 
